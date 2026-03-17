@@ -1,0 +1,24 @@
+@use '../abstract/mixins' as *;
+@use '../base/font' as *;
+
+.button{
+    @include flex-center(row, 20px);
+    border: unset;
+    padding: 24px;
+    text-decoration: none;
+    cursor: pointer;
+    &__icon{
+        transition: all 0.2s ease-in-out;
+    }
+    &__text{
+        font-family: 'Red Rose Bold';
+        font-size: 40px;
+        color: #303131;
+    }
+    &--primary{
+        background-color: #F0EA6E;
+    }
+    &--disabled{
+        background-color: #DBDBD6;
+    }
+}

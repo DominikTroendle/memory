@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory - Settings</title>
+</head>
+<body>
+    <main class="settings">
+        <header class="settings__header">
+            <h1>Settings</h1>
+        </header>
+        <div class="settings__layout">
+            <form class="settings__form">
+                <fieldset>
+                    <legend>Game Themes</legend>
+                    <label>
+                        <input type="radio" name="theme" value="code" checked>
+                        Code Vibes Theme
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="gaming">
+                        Gaming Theme
+                    </label>
+                    <label>
+                        <input type="radio" name="theme" value="da">
+                        DA Projects Theme
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Choose Player</legend>
+                    <label>
+                        <input type="radio" name="player" value="blue" checked>
+                        Blue
+                    </label>
+                    <label>
+                        <input type="radio" name="player" value="orange">
+                        Orange
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Board Size</legend>
+                    <label>
+                        <input type="radio" name="board" value="16" checked>
+                        16 Cards
+                    </label>
+                    <label>
+                        <input type="radio" name="board" value="24">
+                        24 Cards
+                    </label>
+                    <label>
+                        <input type="radio" name="board" value="36">
+                        36 Cards
+                    </label>
+                </fieldset>
+            </form>
+            <div class="settings__right">
+                <img class="settings__preview" src="/assets/theme-coding_preview.png" alt="theme-preview">
+                <section class="settings__summary">
+                    <ul>
+                        <li>Game Theme</li>
+                        <li>Player</li>
+                        <li>Board Size</li>
+                    </ul>
+                    <a class="button button--primary" href="">
+                        <img class="button__icon" src="/assets/play.png" alt="">
+                        <span class="button__text">Start</span>
+                    </a>
+                </section>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="../main.ts"></script>
+</body>
+</html>

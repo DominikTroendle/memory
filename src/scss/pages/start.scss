@@ -1,0 +1,45 @@
+@use '../abstract/mixins' as *;
+@use '../base/font' as *;
+
+.start{
+    @include flex-center(column, 85px);
+    height: 100vh;
+    background-color: #303131;
+    background-image: url('assets/controller_bg.png');
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    &__hero{
+        color: white;
+    }
+    &__subtitle{
+        font-family: 'Almarai';
+    }
+    &__title{
+        font-family: 'Red Rose Bold';
+        font-size: 140px;
+    }
+}
+
+.button{
+    &__play{
+        align-self: center;
+    }
+    &__icon{
+        width: 44px;
+        transform: rotate(25.77deg);
+    }
+    &__arrow{
+        width: 33px;
+    }
+}
+
+.button:hover{
+    .button__icon{
+        width: 51px;
+        transform: rotate(0);
+    }
+    .button__arrow{
+        content: url('../assets/arrow_thick.png');
+        width: 36px;
+    }
+}
