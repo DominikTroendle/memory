@@ -1,0 +1,71 @@
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+@use '../base/font' as *;
+
+.settings{
+    @include flex-start(column, 62px);
+    height: 100vh;
+    padding: 100px 170px;
+    &__layout{
+        @include flex-space();
+        width: 100%;
+    }
+    &__form{
+        @include flex-space(column);
+        height: 100%;
+        fieldset{
+            @include flex-start(column, 12px);
+            border: unset;
+        }
+        legend{
+            @include flex-center(row, 8px);
+            margin-bottom: 16px;
+        }
+        label{
+            @include flex-center(row, 10px);
+            padding-left: 44px;
+        }
+    }
+    &__right{
+        @include flex-space(column);
+        justify-content: flex-end;
+    }
+    &__summary{
+        @include flex-start();
+        ul{
+            @include flex-start();
+        }
+    }
+}
+
+header{
+    position: relative;
+    font-family: 'Red Rose Bold';
+    font-size: 32px;
+    text-decoration: underline;
+    text-decoration-color: $primary;
+    text-underline-offset: 18px;
+    text-decoration-thickness: 4px;
+    h1:after{
+        content: "";
+        position: absolute;
+        bottom: -7px;
+        left: -16px;
+        border: 8px solid $primary;
+        transform: rotate(45deg);
+    }
+}
+
+legend{
+    font-family: 'Almarai Bold';
+    font-size: 24px;
+    img{
+        width: 32px;
+        aspect-ratio: 1/1;
+    }
+}
+
+label{
+    font-family: 'Almarai';
+    font-size: 20px;
+}
