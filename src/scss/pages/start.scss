@@ -1,10 +1,11 @@
 @use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
 @use '../base/font' as *;
 
 .start{
     @include flex-center(column, 85px);
     height: 100vh;
-    background-color: #303131;
+    background-color: $background;
     background-image: url('assets/controller_bg.png');
     background-repeat: no-repeat;
     background-position: left bottom;
@@ -20,26 +21,24 @@
     }
 }
 
-.button{
-    &__play{
-        align-self: center;
-    }
-    &__icon{
+
+.button--play{
+    align-self: center;
+    .button__icon{
         width: 44px;
         transform: rotate(25.77deg);
     }
-    &__arrow{
+    .button__arrow{
         width: 33px;
     }
-}
-
-.button:hover{
-    .button__icon{
-        width: 51px;
-        transform: rotate(0);
-    }
-    .button__arrow{
-        content: url('../assets/arrow_thick.png');
-        width: 36px;
+    &:hover{
+        .button__icon{
+            width: 51px;
+            transform: rotate(0);
+        }
+        .button__arrow{
+            width: 36px;
+            content: url('../assets/arrow_thick.png');
+        }
     }
 }

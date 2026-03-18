@@ -1,4 +1,5 @@
 @use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
 @use '../base/font' as *;
 
 .button{
@@ -13,12 +14,12 @@
     &__text{
         font-family: 'Red Rose Bold';
         font-size: 40px;
-        color: #303131;
+        color: $background;
     }
     &--primary{
-        background-color: #F0EA6E;
+        background-color: $primary;
     }
     &--disabled{
-        background-color: #DBDBD6;
+        background-color: $secondary;
     }
 }
