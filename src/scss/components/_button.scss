@@ -8,17 +8,21 @@
     padding: 24px;
     text-decoration: none;
     cursor: pointer;
+
     &__icon{
         transition: all 0.2s ease-in-out;
     }
+
     &__text{
         font-family: 'Red Rose Bold';
         font-size: 40px;
         color: $background;
     }
+
     &--primary{
         background-color: $primary;
     }
+    
     &--disabled{
         background-color: $secondary;
     }

@@ -59,6 +59,7 @@
     margin-bottom: 16px;
     font-family: 'Almarai Bold';
     font-size: 24px;
+    
     img{
         width: 32px;
         aspect-ratio: 1/1;
@@ -92,6 +93,7 @@
     @include flex-center();
     position: relative;
     height: 100%;
+
     &:not(:last-child):after{
         content: "";
         position: absolute;
@@ -107,18 +109,22 @@
     padding: 10px 15px;
     gap: 8px;
     max-height: 50px;
+
     .button__icon{
         transform: rotate(5deg);
         width: 30px;
     }
+
     .button__text{
         font-size: 20px;
     }
+
     &:hover{
         .button__icon{
             transform: rotate(0);
             width: 35px;
         }
+
         .button__text{
             transform: scale(1.1);
         }
