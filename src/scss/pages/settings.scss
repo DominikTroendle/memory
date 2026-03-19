@@ -59,7 +59,7 @@
     margin-bottom: 16px;
     font-family: 'Almarai Bold';
     font-size: 24px;
-    
+
     img{
         width: 32px;
         aspect-ratio: 1/1;
@@ -68,10 +68,34 @@
 
 .settings__form label{
     @include flex-center(row, 10px);
-    padding-left: 44px;
+    margin-left: 44px;
     font-family: 'Almarai';
     font-size: 20px;
     cursor: pointer;
+}
+
+.settings__form input[type=radio]{
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 3px solid black;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    &::before{
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        box-shadow: inset 8px 8px black;
+        transform: scale(0);
+    }
+    &:checked{
+        border: 2px solid black;
+        &::before{
+            transform: scale(1);
+        } 
+    }
 }
 
 .settings__summary{
