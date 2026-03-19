@@ -5,40 +5,27 @@
 .settings{
     @include flex-start(column, 62px);
     height: 100vh;
+    width: 100%;
+    max-width: 1440px;
     padding: 100px 170px;
-    &__layout{
-        @include flex-space();
-        width: 100%;
-    }
-    &__form{
-        @include flex-space(column);
-        height: 100%;
-        fieldset{
-            @include flex-start(column, 12px);
-            border: unset;
-        }
-        legend{
-            @include flex-center(row, 8px);
-            margin-bottom: 16px;
-        }
-        label{
-            @include flex-center(row, 10px);
-            padding-left: 44px;
-        }
-    }
-    &__right{
-        @include flex-space(column);
-        justify-content: flex-end;
-    }
-    &__summary{
-        @include flex-start();
-        ul{
-            @include flex-start();
-        }
-    }
 }
 
-header{
+.settings__layout{
+    @include flex-space();
+    width: 100%;
+}
+
+.settings__right{
+    @include flex-space(column);
+    align-items: flex-end;
+    height: 100%;
+}
+
+.settings__preview{
+    width: 460px;
+}
+
+.settings__header{
     position: relative;
     font-family: 'Red Rose Bold';
     font-size: 32px;
@@ -46,17 +33,30 @@ header{
     text-decoration-color: $primary;
     text-underline-offset: 18px;
     text-decoration-thickness: 4px;
-    h1:after{
-        content: "";
-        position: absolute;
-        bottom: -7px;
-        left: -16px;
-        border: 8px solid $primary;
-        transform: rotate(45deg);
-    }
 }
 
-legend{
+.settings__header h1::after{
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: -16px;
+    border: 8px solid $primary;
+    transform: rotate(45deg);
+}
+
+.settings__form{
+    @include flex-start(column, 54px);
+    height: 100%;
+}
+
+.settings__form fieldset{
+    @include flex-start(column, 12px);
+    border: unset;
+}
+
+.settings__form legend{
+    @include flex-center(row, 8px);
+    margin-bottom: 16px;
     font-family: 'Almarai Bold';
     font-size: 24px;
     img{
@@ -65,7 +65,62 @@ legend{
     }
 }
 
-label{
+.settings__form label{
+    @include flex-center(row, 10px);
+    padding-left: 44px;
     font-family: 'Almarai';
     font-size: 20px;
+    cursor: pointer;
+}
+
+.settings__summary{
+    @include flex-center(row, 20px);
+    padding: 10px 14px;
+    background-color: $background-light;
+    max-height: 78px;
+}
+
+.settings__summary ul{
+    @include flex-start(row, 42px);
+    height: 100%;
+    list-style: none;
+    font-family: 'Almarai';
+    font-size: 20px;
+}
+
+.settings__summary li{
+    @include flex-center();
+    position: relative;
+    height: 100%;
+    &:not(:last-child):after{
+        content: "";
+        position: absolute;
+        right: -25px;
+        top: 0;
+        height: 100%;
+        border-right: 8px solid $primary;
+        transform: rotate(15deg);
+    }
+}
+
+.button--start{
+    padding: 10px 15px;
+    gap: 8px;
+    max-height: 50px;
+    .button__icon{
+        transform: rotate(5deg);
+        width: 30px;
+    }
+    .button__text{
+        font-size: 20px;
+    }
+    &:hover{
+        .button__icon{
+            transform: rotate(0);
+            width: 35px;
+        }
+        .button__text{
+            transform: scale(1.1);
+        }
+    }
 }
