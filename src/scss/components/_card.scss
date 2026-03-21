@@ -1,5 +1,5 @@
 .card{
-    height: 100px;
+    height: 120px;
     aspect-ratio: 1/1;
     background-color: transparent;
     border: none;
@@ -15,12 +15,17 @@
     &__face{
         position: absolute;
         inset: 0;
-        background-color: black;
+        background-image:
+                        url(/assets/da-icon.png),
+                        linear-gradient(215deg,#4DD5BC 0%, #286F62 60%, #10443a 100%);
+        background-position: center;
+        background-repeat: no-repeat;
         backface-visibility: hidden;
 
         &--back{
             transform: rotateY(180deg);
-            background-color: purple;
+            background-image: none;
+            background-color: black;
         }
     }
     &.is-flipped .card__inner{
