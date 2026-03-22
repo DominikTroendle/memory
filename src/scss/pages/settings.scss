@@ -82,6 +82,7 @@
     border-radius: 50%;
     display: grid;
     place-content: center;
+
     &::before{
         content: "";
         width: 6px;
@@ -90,8 +91,10 @@
         box-shadow: inset 8px 8px black;
         transform: scale(0);
     }
+
     &:checked{
         border: 2px solid black;
+        
         &::before{
             transform: scale(1);
         } 
