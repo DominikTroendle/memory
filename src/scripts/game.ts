@@ -10,37 +10,37 @@ let gameSettings: GameSettings;
 
 document.addEventListener('DOMContentLoaded', () => {
     gameSettings = getGameSettings();
-    renderCards();
-    init();
+    initGame();
 })
 
 function getGameSettings(): GameSettings {
     const data = sessionStorage.getItem('gameSettings');
     if(!data){
         return {
-            theme: "code vibes",
-            player: "blue",
+            theme: "Code Vibes Theme",
+            player: "Blue",
             boardSize: 16
         };
     };
     return JSON.parse(data) as GameSettings;
 }
 
-function init(){
+function initGame() {
     if(field){
         field.addEventListener('click', e => {
             const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
             card.classList.toggle('is-flipped');
         });
     };
+    renderCards();
 }
 
 function renderCards() {
-    for(let i = 0; i < gameSettings.boardSize; i++){
-        if(field){
+    if(field){
+        for(let i = 0; i < gameSettings.boardSize; i++){
             field.innerHTML += returnCardHTML();
-        }
-    }
+        };
+    };
 }
 
 function returnCardHTML() {

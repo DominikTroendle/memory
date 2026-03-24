@@ -116,7 +116,6 @@
     border: 2px solid $secondary;
     gap: 10px;
     padding: 16px 24px;
-    max-height: 62px;
 
     .button__icon{
         transition: none;
@@ -129,6 +128,7 @@
 
     &:hover{
         border: 3px solid $secondary;
+        padding: 15px 23px;
         box-shadow: 0 0 20px $tertiary;
 
         .button__icon{
