@@ -30,8 +30,8 @@
 
         &--back{
             transform: rotateY(180deg);
-            background-image: none;
-            background-color: black;
+            // background-image: none;
+            // background-color: black;
         }
     }
     &.is-flipped .card__inner{

@@ -4,9 +4,11 @@ interface GameSettings {
     boardSize: number
 }
 
-let field: HTMLElement;
+const player = document.querySelector('.current-player');
 
+let field: HTMLElement;
 let gameSettings: GameSettings;
+let currentPlayer: String;
 
 document.addEventListener('DOMContentLoaded', () => {
     gameSettings = getGameSettings();
@@ -33,8 +35,16 @@ function getGameSettings(): GameSettings {
 }
 
 function initGame() {
+    setPlayer();
     renderCards();
     addCardAnimation();
+}
+
+function setPlayer() {
+    if(player && gameSettings.player == "Orange"){
+        player.classList.remove('game__player--blue');
+        player.classList.add('game__player--orange');
+    }
 }
 
 function renderCards() {
