@@ -4,14 +4,21 @@ interface GameSettings {
     boardSize: number
 }
 
-const field = document.getElementById('field');
+let field: HTMLElement;
 
 let gameSettings: GameSettings;
 
 document.addEventListener('DOMContentLoaded', () => {
     gameSettings = getGameSettings();
+    initField();
     initGame();
 })
+
+function initField(){
+    const element = document.getElementById('field');
+    if(!element) throw new Error('field not found');
+    field = element;
+}
 
 function getGameSettings(): GameSettings {
     const data = sessionStorage.getItem('gameSettings');
@@ -26,20 +33,17 @@ function getGameSettings(): GameSettings {
 }
 
 function initGame() {
-    if(field){
-        field.addEventListener('click', e => {
-            const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
-            card.classList.toggle('is-flipped');
-        });
-    };
     renderCards();
+    addCardAnimation();
 }
 
 function renderCards() {
-    if(field){
-        for(let i = 0; i < gameSettings.boardSize; i++){
-            field.innerHTML += returnCardHTML();
-        };
+    if(gameSettings.boardSize > 16){
+        field.classList.remove('game__field--small');
+        field.classList.add('game__field--large');
+    }
+    for(let i = 0; i < gameSettings.boardSize; i++){
+        field.innerHTML += returnCardHTML();
     };
 }
 
@@ -50,4 +54,11 @@ function returnCardHTML() {
                     <div class="card__face card__face--back"></div>
                 </div>
             </button>`;
+}
+
+function addCardAnimation() {
+    field.addEventListener('click', e => {
+        const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
+        card.classList.toggle('is-flipped');
+    });
 }
