@@ -22,7 +22,7 @@
         position: absolute;
         inset: 0;
         background-image:
-                        url(/assets/da-icon.png),
+                        url("/assets/da-icon.png"),
                         linear-gradient(215deg,#4DD5BC 0%, #286F62 60%, #10443a 100%);
         background-position: center;
         background-repeat: no-repeat;
@@ -30,8 +30,7 @@
 
         &--back{
             transform: rotateY(180deg);
-            // background-image: none;
-            // background-color: black;
+            background-color: #E8F3F0;
         }
     }
     &.is-flipped .card__inner{

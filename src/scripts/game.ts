@@ -1,14 +1,38 @@
-interface GameSettings {
-    theme: string,
-    player: string,
-    boardSize: number
-}
+interface Card {
+    id: number,
+    source: string,
+    flipped: boolean,
+    matched: boolean
+};
 
+const bgImages = [
+    'angular-icon.png',
+    'bootstrap-icon.png',
+    'css-icon.png',
+    'django-icon.png',
+    'firebase-icon.png',
+    'github-icon.png',
+    'git-icon.png',
+    'html-icon.png',
+    'js-icon.png',
+    'nodejs-icon.png',
+    'python-icon.png',
+    'react-icon.png',
+    'sass-icon.png',
+    'sql-icon.png',
+    'terminal-icon.png',
+    'ts-icon.png',
+    'vscode-icon.png',
+    'vue-icon.png'
+];
 const player = document.querySelector('.current-player');
 
 let field: HTMLElement;
 let gameSettings: GameSettings;
-let currentPlayer: String;
+let currentPlayer: string;
+let cards: Card[];
+let isFlipped = false;
+let isMatched = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     gameSettings = getGameSettings();
@@ -36,6 +60,7 @@ function getGameSettings(): GameSettings {
 
 function initGame() {
     setPlayer();
+    cards = createCardArray();
     renderCards();
     addCardAnimation();
 }
@@ -52,16 +77,20 @@ function renderCards() {
         field.classList.remove('game__field--small');
         field.classList.add('game__field--large');
     }
-    for(let i = 0; i < gameSettings.boardSize; i++){
-        field.innerHTML += returnCardHTML();
-    };
+    for(let i = 0; i < cards.length; i++){
+        field.innerHTML += returnCardHTML(cards[i].id, cards[i].source);
+    }
 }
 
-function returnCardHTML() {
-    return `<button class="card">
+function returnCardHTML(id: number, src: string) {
+    return `<button class="card" data-id=${id}>
                 <div class="card__inner">
                     <div class="card__face"></div>
-                    <div class="card__face card__face--back"></div>
+                    <div
+                        class="card__face
+                        card__face--back"
+                        style="background-image: url('../assets/${src}')"
+                    ></div>
                 </div>
             </button>`;
 }
@@ -71,4 +100,24 @@ function addCardAnimation() {
         const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
         card.classList.toggle('is-flipped');
     });
+}
+
+function createCardArray() {
+    const neededCards = gameSettings.boardSize / 2;
+    const selectedImages = bgImages.slice(0, neededCards);
+    const cardImages = [...selectedImages, ...selectedImages];
+    return shuffle(cardImages).map((image, index) => ({
+        id: index,
+        source: image,
+        flipped: false,
+        matched: false
+    }));
+}
+
+function shuffle(array: string[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
