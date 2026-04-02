@@ -31,8 +31,7 @@ let field: HTMLElement;
 let gameSettings: GameSettings;
 let currentPlayer: string;
 let cards: Card[];
-let isFlipped = false;
-let isMatched = false;
+let currentlyFlipped: Card[] = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     gameSettings = getGameSettings();
@@ -61,8 +60,8 @@ function getGameSettings(): GameSettings {
 function initGame() {
     setPlayer();
     cards = createCardArray();
-    renderCards();
-    addCardAnimation();
+    renderField();
+    addCardFunction();
 }
 
 function setPlayer() {
@@ -72,7 +71,7 @@ function setPlayer() {
     }
 }
 
-function renderCards() {
+function renderField() {
     if(gameSettings.boardSize > 16){
         field.classList.remove('game__field--small');
         field.classList.add('game__field--large');
@@ -83,7 +82,7 @@ function renderCards() {
 }
 
 function returnCardHTML(id: number, src: string) {
-    return `<button class="card" data-id=${id}>
+    return `<button class="card" id=${id}>
                 <div class="card__inner">
                     <div class="card__face"></div>
                     <div
@@ -95,10 +94,12 @@ function returnCardHTML(id: number, src: string) {
             </button>`;
 }
 
-function addCardAnimation() {
+function addCardFunction() {
     field.addEventListener('click', e => {
         const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
-        card.classList.toggle('is-flipped');
+        const id = Number(card.id);
+        flipCard(card, id);
+        checkMatch(card);
     });
 }
 
@@ -120,4 +121,19 @@ function shuffle(array: string[]) {
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+}
+
+function flipCard(card: HTMLButtonElement, id: number) {
+    const currentCard = cards[id];
+    currentCard.flipped = !currentCard.flipped;
+    if(currentCard.flipped) currentlyFlipped.push(currentCard);
+    card.classList.toggle('is-flipped');
+}
+
+function checkMatch(card: HTMLButtonElement) {
+    if(currentlyFlipped.length != 2) return;
+    if(currentlyFlipped[0].source == currentlyFlipped[1].source) {
+        currentlyFlipped[0].matched = true;
+        currentlyFlipped[1].matched = true;
+    }
 }
