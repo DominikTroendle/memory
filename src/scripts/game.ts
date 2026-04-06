@@ -180,7 +180,7 @@ function shuffle(array: string[]) {
 
 function flipCard(card: HTMLButtonElement, id: number) {
     const currentCard = cards[id];
-    if(currentCard.matched) return;
+    if(currentCard.matched || currentCard.flipped) return;
     if(!currentCard.flipped) currentCard.flipped = true;
     if(currentCard.flipped) currentlyFlipped.push(currentCard);
     card.classList.toggle('is-flipped');
@@ -205,6 +205,7 @@ function resetCards() {
             const card = document.getElementById(String(e.id));
             if(e.flipped && !e.matched) {
                 card?.classList.remove('is-flipped');
+                e.flipped = !e.flipped;
             }
         });
     }, 500);
