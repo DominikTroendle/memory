@@ -140,7 +140,7 @@ function addOverlayFunctions() {
         closeOverlay();
     });
     menuButton.addEventListener('click', () => {
-        window.location.href = "/memory/";
+        window.location.href = "/memory/pages/settings.html";
     });
 }
 
