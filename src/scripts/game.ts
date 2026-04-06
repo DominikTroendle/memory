@@ -197,6 +197,7 @@ function checkMatch() {
         switchPlayer();
     }
     currentlyFlipped = [];
+    checkGameEnd();
 }
 
 function resetCards() {
@@ -227,4 +228,18 @@ function switchPlayer() {
         currentPlayer = currentPlayer === "orange" ? "blue" : "orange";
         player.classList.add(`game__player--${currentPlayer}`);
     }, 500);
+}
+
+function checkGameEnd() {
+    const totalScore = scoreBlue + scoreOrange;
+    const maxScore = gameSettings.boardSize / 2;
+    if(totalScore != maxScore) {
+        return;
+    } else {
+        setTimeout(() => {
+            sessionStorage.setItem('scoreBlue', JSON.stringify(scoreBlue));
+            sessionStorage.setItem('scoreOrange', JSON.stringify(scoreOrange));
+            window.location.href = "/memory/pages/game-ended.html";
+        }, 1000);
+    }
 }
