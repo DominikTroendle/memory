@@ -6,6 +6,19 @@
     <title>Memory - Game</title>
 </head>
 <body>
+    <dialog class="overlay" id="overlay">
+        <div class="overlay__card" id="card">
+            <p class="overlay__text">Are you sure you want to quit the game? </p>
+            <nav class="overlay__nav">
+                <button class="button button__exit button__exit--bgSolid"  id="menu">
+                    <span class="button__text button__text--sm button__text--black">Exit Game</span>
+                </button>
+                <button class="button button__exit" id="resume">
+                    <span class="button__text button__text--sm button__text--turqouise">Resume Playing</span>
+                </button>
+            </nav>
+        </div>
+    </dialog>
     <main class="game">
         <header class="game__header">
             <section class="game__score">
@@ -21,9 +34,9 @@
                 </ul>
             </section>
             <section class="game__player">
-                <p class="current-player game__player--blue">Current Player:</p>
+                <p class="current-player game__player--blue" id="player">Current Player:</p>
             </section>
-            <button class="button button--exit button--primary">
+            <button class="button button__exit" id="exit">
                 <img class="button__icon" src="../assets/forward.png" alt="forward-icon">
                 <span class="button__text">Exit Game</span>
             </button>

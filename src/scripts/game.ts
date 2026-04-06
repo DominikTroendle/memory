@@ -25,24 +25,46 @@ const bgImages = [
     'vscode-icon.png',
     'vue-icon.png'
 ];
-const player = document.querySelector('.current-player');
 
+let body: HTMLBodyElement;
 let field: HTMLElement;
+let player: HTMLElement;
+let scoreDisplayBlue: HTMLSpanElement;
+let scoreDisplayOrange: HTMLSpanElement;
+let overlay: HTMLDialogElement;
+let overlayCard: HTMLDivElement;
+let exitButton: HTMLButtonElement;
+let resumeButton: HTMLButtonElement;
+let menuButton: HTMLButtonElement;
+
 let gameSettings: GameSettings;
 let currentPlayer: string;
+let scoreOrange = 0;
+let scoreBlue = 0;
 let cards: Card[];
 let currentlyFlipped: Card[] = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     gameSettings = getGameSettings();
-    initField();
+    initElementRefs();
+    initOverlayRefs();
     initGame();
 })
 
-function initField(){
-    const element = document.getElementById('field');
-    if(!element) throw new Error('field not found');
-    field = element;
+function initElementRefs() {
+    body = document.querySelector('body') as HTMLBodyElement;
+    field = document.getElementById('field') as HTMLElement;
+    player = document.getElementById('player') as HTMLElement;
+    scoreDisplayBlue = document.getElementById('score-blue') as HTMLSpanElement;
+    scoreDisplayOrange = document.getElementById('score-orange') as HTMLSpanElement;
+}
+
+function initOverlayRefs() {
+    overlay = document.getElementById('overlay') as HTMLDialogElement;
+    overlayCard = document.getElementById('card') as HTMLDivElement;
+    exitButton = document.getElementById('exit') as HTMLButtonElement;
+    resumeButton = document.getElementById('resume') as HTMLButtonElement;
+    menuButton = document.getElementById('menu') as HTMLButtonElement;
 }
 
 function getGameSettings(): GameSettings {
@@ -62,12 +84,16 @@ function initGame() {
     cards = createCardArray();
     renderField();
     addCardFunction();
+    addOverlayFunctions();
 }
 
 function setPlayer() {
-    if(player && gameSettings.player == "Orange"){
+    if(gameSettings.player == "Orange"){
         player.classList.remove('game__player--blue');
         player.classList.add('game__player--orange');
+        currentPlayer = "orange";
+    } else {
+        currentPlayer = "blue";
     }
 }
 
@@ -95,12 +121,41 @@ function returnCardHTML(id: number, src: string) {
 }
 
 function addCardFunction() {
-    field.addEventListener('click', e => {
-        const card = (e.target as HTMLElement).closest(".card") as HTMLButtonElement;
-        const id = Number(card.id);
-        flipCard(card, id);
-        checkMatch(card);
+    const allCards = document.querySelectorAll<HTMLButtonElement>('.card');
+    allCards.forEach(e => {
+        e.addEventListener('click', e => {
+            const card = e.currentTarget as HTMLButtonElement;
+            const id = Number(card.id);
+            flipCard(card, id);
+            checkMatch();
+        })
     });
+}
+
+function addOverlayFunctions() {
+    exitButton.addEventListener('click', () => {
+        openOverlay();
+    });
+    resumeButton.addEventListener('click', () => {
+        closeOverlay();
+    });
+    menuButton.addEventListener('click', () => {
+        window.location.href = "/memory/";
+    });
+}
+
+function openOverlay() {
+    overlay.showModal();
+    setTimeout(() => {
+        overlayCard.classList.add('overlay__card--show');
+        body.classList.add('no-scroll');
+    }, 20);
+}
+
+function closeOverlay() {
+    overlay.close();
+    overlayCard.classList.remove('overlay__card--show');
+    body.classList.remove('no-scroll');
 }
 
 function createCardArray() {
@@ -125,15 +180,50 @@ function shuffle(array: string[]) {
 
 function flipCard(card: HTMLButtonElement, id: number) {
     const currentCard = cards[id];
-    currentCard.flipped = !currentCard.flipped;
+    if(currentCard.matched) return;
+    if(!currentCard.flipped) currentCard.flipped = true;
     if(currentCard.flipped) currentlyFlipped.push(currentCard);
     card.classList.toggle('is-flipped');
 }
 
-function checkMatch(card: HTMLButtonElement) {
+function checkMatch() {
     if(currentlyFlipped.length != 2) return;
     if(currentlyFlipped[0].source == currentlyFlipped[1].source) {
         currentlyFlipped[0].matched = true;
         currentlyFlipped[1].matched = true;
+        updateScore();
+    } else {
+        resetCards();
+        switchPlayer();
     }
+    currentlyFlipped = [];
+}
+
+function resetCards() {
+    setTimeout(() => {
+        cards.forEach(e => {
+            const card = document.getElementById(String(e.id));
+            if(e.flipped && !e.matched) {
+                card?.classList.remove('is-flipped');
+            }
+        });
+    }, 500);
+}
+
+function updateScore() {
+    if(currentPlayer == "orange") {
+        scoreOrange += 1;
+    } else {
+        scoreBlue += 1;
+    }
+    scoreDisplayBlue.innerHTML = String(scoreBlue);
+    scoreDisplayOrange.innerHTML = String(scoreOrange);
+}
+
+function switchPlayer() {
+    setTimeout(() => {
+        player.classList.remove(`game__player--${currentPlayer}`);
+        currentPlayer = currentPlayer === "orange" ? "blue" : "orange";
+        player.classList.add(`game__player--${currentPlayer}`);
+    }, 500);
 }

@@ -2,6 +2,51 @@
 @use '../abstract/variables' as *;
 @use '../base/font' as *;
 
+.no-scroll{
+    overflow: hidden;
+}
+
+.overlay[open]{
+    @include flex-center();
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    max-height: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    z-index: 3;
+}
+
+.overlay{
+    &::backdrop{
+        backdrop-filter: blur(5px);
+    }
+
+    &__card{
+        @include flex-center(column, 54px);
+        background: white;
+        padding: 40px;
+        max-width: 540px;
+        transform: translateY(-250%);
+        transition: transform 0.3s ease-in-out;
+        &--show{
+            transform: translateY(0);
+        }
+    }
+
+    &__text{
+        color: black;
+        font-family: 'Red Rose Bold';
+        font-size: 32px;
+        text-align: center;
+    }
+
+    &__nav{
+        @include flex-center(row, 24px);
+    }
+}
+
 .game{
     @include flex-start(column, 54px);
     align-items: center;
@@ -117,11 +162,19 @@
     }
 }
 
-.button--exit{
+.button__exit{
     background-color: $tertiary;
     border: 2px solid $secondary;
     gap: 10px;
     padding: 16px 24px;
+
+    &--bgSolid{
+        background-color:#66CFBC;
+
+        &:hover{
+            background-color: rgba($color: #66CFBC, $alpha: 0.7);
+        }
+    }
 
     .button__icon{
         transition: none;
@@ -130,6 +183,18 @@
     .button__text{
         color: white;
         font-size: 24px;
+    }
+
+    .button__text--sm{
+        font-size: 20px;
+    }
+
+    .button__text--turqouise{
+        color: $secondary;
+    }
+
+    .button__text--black{
+        color: black;
     }
 
     &:hover{
