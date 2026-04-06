@@ -1,0 +1,42 @@
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+@use '../base/font' as *;
+
+.endscreen{
+    @include flex-center(column, 64px);
+    justify-content: flex-start;
+    height: 100vh;
+    width: 100%;
+    background-color: $background;
+    &__confetti{
+        width: 1240px;
+        height: 360px;
+    }
+}
+
+.endscreen__header{
+    @include flex-center(column, 10px);
+    margin-top: -54px;
+}
+
+.endscreen__subheadline{
+    font-family: 'Red Rose';
+    font-weight: 100;
+    color: white;
+}
+
+.endscreen__headline{
+    font-family: 'Red Rose Bold';
+    font-size: 60px;
+    color: $player-blue;
+
+    &--orange{
+        color: $player-orange;
+    }
+}
+
+.endscreen__image{
+    width: 200px;
+    height: 250px;
+    margin-top: 54px;
+}
