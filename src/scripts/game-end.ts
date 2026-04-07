@@ -1,3 +1,5 @@
+import { getElement } from "../utils/dom";
+
 let finalScoreBlue: string;
 let finalScoreOrange: string;
 
@@ -17,10 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function init() {
-    finalScoreDisplayBlue = document.getElementById('final-score-blue') as HTMLSpanElement;
-    finalScoreDisplayOrange = document.getElementById('final-score-orange') as HTMLSpanElement;
-    winnerRef = document.getElementById('winner') as HTMLHeadingElement;
-    winnerImgRef = document.getElementById('winner-img') as HTMLImageElement;
+    winnerRef = getElement<HTMLHeadingElement>('winner');
+    winnerImgRef = getElement<HTMLImageElement>('winner-img');
 }
 
 function getSessionStorage() {
@@ -39,6 +39,8 @@ function displayGameWinner() {
 }
 
 function displayFinalScore() {
+    finalScoreDisplayBlue = getElement<HTMLSpanElement>('final-score-blue');
+    finalScoreDisplayOrange = getElement<HTMLSpanElement>('final-score-orange');
     finalScoreDisplayBlue.innerHTML = finalScoreBlue;
     finalScoreDisplayOrange.innerHTML = finalScoreOrange;
 }

@@ -1,8 +1,5 @@
-interface GameSettings {
-    theme: string,
-    player: string,
-    boardSize: number
-}
+import { GameSettings } from '../types/interfaces';
+import { getElement } from '../utils/dom';
 
 let settings: GameSettings = {
     theme: "Code Vibes Theme",
@@ -10,10 +7,9 @@ let settings: GameSettings = {
     boardSize: 16
 };
 
-const startButton = document.getElementById('button-start');
-
-const previewImage = document.querySelector<HTMLImageElement>('.settings__preview');
-const summaryList = document.querySelector('.settings__summary ul');
+let startButton: HTMLButtonElement;
+let previewImage: HTMLImageElement;
+let summaryList: HTMLUListElement;
 
 const themeInputs = document.querySelectorAll<HTMLInputElement>('input[name="theme"]');
 const playerInputs = document.querySelectorAll<HTMLInputElement>('input[name="player"]');
@@ -26,14 +22,20 @@ const themePreviewMap: Record<string, string> = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initElRefs();
     initSettings();
 })
 
-startButton?.addEventListener('click', () => {
-    sessionStorage.setItem('gameSettings', JSON.stringify(settings));
-})
+function initElRefs(){
+    startButton = getElement<HTMLButtonElement>('button-start');
+    previewImage = getElement<HTMLImageElement>('preview');
+    summaryList = getElement<HTMLUListElement>('summary');
+}
 
 function initSettings(){
+    startButton.addEventListener('click', () => {
+        sessionStorage.setItem('gameSettings', JSON.stringify(settings));
+    })
     themeInputs.forEach(input => {
         input.addEventListener('change', () => {
             settings.theme = input.value;
@@ -56,15 +58,11 @@ function initSettings(){
 }
 
 function updateSummary(){
-    if(previewImage){
-        const theme = settings.theme.replace(/\s/g, "");
-        previewImage.src = themePreviewMap[theme];
-    }
-    if(summaryList){
-        summaryList.innerHTML = `
-            <li>${settings.theme}</li>
-            <li>${settings.player}</li>
-            <li>${settings.boardSize} Cards</li>
-            `
-    }
+    const theme = settings.theme.replace(/\s/g, "");
+    previewImage.src = themePreviewMap[theme];
+    summaryList.innerHTML = `
+        <li>${settings.theme}</li>
+        <li>${settings.player}</li>
+        <li>${settings.boardSize} Cards</li>
+        `
 }

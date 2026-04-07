@@ -1,9 +1,6 @@
-interface Card {
-    id: number,
-    source: string,
-    flipped: boolean,
-    matched: boolean
-};
+import { Card } from '../types/interfaces';
+import { GameSettings } from '../types/interfaces';
+import { getElement } from '../utils/dom';
 
 const bgImages = [
     'angular-icon.png',
@@ -47,24 +44,20 @@ let currentlyFlipped: Card[] = [];
 document.addEventListener('DOMContentLoaded', () => {
     gameSettings = getGameSettings();
     initElementRefs();
-    initOverlayRefs();
     initGame();
 })
 
 function initElementRefs() {
-    body = document.querySelector('body') as HTMLBodyElement;
-    field = document.getElementById('field') as HTMLElement;
-    player = document.getElementById('player') as HTMLElement;
-    scoreDisplayBlue = document.getElementById('score-blue') as HTMLSpanElement;
-    scoreDisplayOrange = document.getElementById('score-orange') as HTMLSpanElement;
-}
-
-function initOverlayRefs() {
-    overlay = document.getElementById('overlay') as HTMLDialogElement;
-    overlayCard = document.getElementById('card') as HTMLDivElement;
-    exitButton = document.getElementById('exit') as HTMLButtonElement;
-    resumeButton = document.getElementById('resume') as HTMLButtonElement;
-    menuButton = document.getElementById('menu') as HTMLButtonElement;
+    body = getElement<HTMLBodyElement>('body');
+    field = getElement<HTMLElement>('field');
+    player = getElement<HTMLElement>('player');
+    scoreDisplayBlue = getElement<HTMLSpanElement>('score-blue');
+    scoreDisplayOrange = getElement<HTMLSpanElement>('score-orange');
+    overlay = getElement<HTMLDialogElement>('overlay');
+    overlayCard = getElement<HTMLDivElement>('card');
+    exitButton = getElement<HTMLButtonElement>('exit');
+    resumeButton = getElement<HTMLButtonElement>('resume');
+    menuButton = getElement<HTMLButtonElement>('menu');
 }
 
 function getGameSettings(): GameSettings {
