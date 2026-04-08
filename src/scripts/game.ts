@@ -73,11 +73,17 @@ function getGameSettings(): GameSettings {
 }
 
 function initGame() {
+    applyTheme();
     setPlayer();
     cards = createCardArray();
     renderField();
     addCardFunction();
     addOverlayFunctions();
+}
+
+function applyTheme() {
+    const theme = gameSettings.theme.toLocaleLowerCase().replace(/\s/g, "");
+    body.classList.add(`theme-${theme}`);
 }
 
 function setPlayer() {
