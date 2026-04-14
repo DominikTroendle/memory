@@ -139,7 +139,9 @@ function addOverlayFunctions() {
         closeOverlay();
     });
     menuButton.addEventListener('click', () => {
-        window.location.href = "/memory/pages/settings.html";
+        sessionStorage.setItem('scoreBlue', JSON.stringify(scoreBlue));
+        sessionStorage.setItem('scoreOrange', JSON.stringify(scoreOrange));
+        window.location.href = "/memory/pages/game-over.html";
     });
 }
 

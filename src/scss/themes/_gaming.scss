@@ -32,6 +32,7 @@
     --end-headline-font-size: 64px;
     --end-subheadline-font-size: 28px;
     --end-margin-top: 0;
+    --end-margin-bottom: 50px;
     --end-filter: drop-shadow(4px 4px 2px rgb(0, 0, 0, 0.4));
 
     //field
@@ -97,4 +98,8 @@
 
 .theme-gamingtheme .game__header {
     font-weight: 700;
+}
+
+.theme-gamingtheme .gameover__hero--coding{
+    display: none;
 }

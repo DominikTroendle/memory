@@ -2,16 +2,19 @@
 @use '../abstract/variables' as *;
 @use '../base/font' as *;
 
+@use '../themes/coding';
+@use '../themes/gaming';
+
 .gameover{
     @include flex-center(column, 64px);
     height: 100vh;
     width: 100%;
-    background-color: $background;
+    background-color: var(--background);
 }
 
 .gameover__header{
     @include flex-center(column, 24px);
-    font-family: 'Red Rose';
+    font-family: var(--font-primary);
 }
 
 .gameover__hero{
@@ -21,6 +24,13 @@
 }
 
 .gameover__headline{
+    font-size: 124px;
+    font-family: var(--font-primary-bold);
+    color: var(--button-solid);
+    margin-bottom: var(--end-margin-bottom);
+}
+
+.gameover__subheadline{
     font-size: 26px;
     color: white;
     font-weight: 100;

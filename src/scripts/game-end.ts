@@ -32,9 +32,11 @@ function getSessionStorage() {
 
 function init() {
     body = getElement<HTMLBodyElement>('body');
-    winnerRef = getElement<HTMLHeadingElement>('winner');
-    winnerImgRef = getElement<HTMLImageElement>('winner-img');
     gameSettings = getGameSettings();
+    if(window.location.href.includes('game-ended')){
+        winnerRef = getElement<HTMLHeadingElement>('winner');
+        winnerImgRef = getElement<HTMLImageElement>('winner-img');
+    }
 }
 
 function getGameSettings(): GameSettings {
@@ -55,10 +57,17 @@ function applyTheme() {
 }
 
 function displayGameWinner() {
-    if(finalScoreBlue < finalScoreOrange) {
-        winnerRef.innerHTML = "ORANGE";
+    const winner = finalScoreBlue > finalScoreOrange ? "blue" : "orange";
+    const isGamingTheme = gameSettings.theme === "Gaming Theme";
+    if(isGamingTheme) {
+        winnerRef.innerHTML = winner === "blue" ? "Blue Player" : "Orange Player";
+        winnerImgRef.src = "../assets/winner-gaming.png";
+    } else {
+        winnerRef.innerHTML = winner.toUpperCase();
+        winnerImgRef.src = `../assets/winner-${winner}.png`;
+    }
+    if(winner === "orange") {
         winnerRef.classList.add('endscreen__headline--orange');
-        winnerImgRef.src = "../assets/winner-orange.png";
     }
 }
 

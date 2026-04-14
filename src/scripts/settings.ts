@@ -34,6 +34,8 @@ function initElRefs(){
 function initSettings(){
     startButton.addEventListener('click', () => {
         sessionStorage.setItem('gameSettings', JSON.stringify(settings));
+        sessionStorage.removeItem('scoreBlue');
+        sessionStorage.removeItem('scoreOrange');
     })
     themeInputs.forEach(input => {
         input.addEventListener('change', () => {
