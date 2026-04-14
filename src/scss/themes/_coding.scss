@@ -8,7 +8,6 @@
     --header-background: #303131;
     --overlay-background: white;
     --score-background: #86E9D633;
-    --text-hover: white;
 
     //fonts
     --font-primary: 'Red Rose';
@@ -39,5 +38,13 @@
     --overlay-max-width: 540px;
 
     //score
+    --score-bg-size: 24px 20px;
+    --score-font-size: 24px;
     --score-gap: 20px;
+    --score-padding-left: 28px;
+    --score-player-blue: url("/assets/player-coding-blue.png");
+    --score-player-orange: url("/assets/player-coding-orange.png");
+
+    //player
+    --player-padding-right: 39px;
 }

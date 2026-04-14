@@ -3,6 +3,7 @@
 @use '../base/font' as *;
 
 @use '../themes/coding';
+@use '../themes/gaming';
 
 .button{
     @include flex-center(row, 20px);
@@ -16,7 +17,7 @@
     }
 
     &__text{
-        font-family: var(--font-primary-bold);
+        font-family: 'Red Rose Bold';
         font-size: 40px;
         color: $background;
     }

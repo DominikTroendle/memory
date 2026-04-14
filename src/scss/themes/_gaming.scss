@@ -36,7 +36,15 @@
     --overlay-max-width: 540px;
 
     //score
+    --score-bg-size: 20px 28px;
+    --score-font-size: 30px;
     --score-gap: 40px;
+    --score-padding-left: 30px;
+    --score-player-blue: url("/assets/winner-blue.png");
+    --score-player-orange: url("/assets/winner-orange.png");
+
+    //player
+    --player-padding-right: 0;
 }
 
 .theme-gamingtheme .game__currentPlayer--codingTheme{
@@ -50,5 +58,13 @@
                 color: #ED1B76;
             }
         }
+    }
+}
+
+.theme-gamingtheme .game__score li,
+.theme-gamingtheme .game__player p{
+    &::after,
+    &::before{
+        display: none;
     }
 }

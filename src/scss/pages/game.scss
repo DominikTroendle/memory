@@ -82,91 +82,48 @@
 
     &--blue{
         color: $player-blue;
+        background-image: var(--score-player-blue);
     }
 
     &--orange{
         color: $player-orange;
+        background-image: var(--score-player-orange);
     }
 }
 
 .game__score ul{
     @include flex-start(row, var(--score-gap));
     list-style: none;
-    font-size: 24px;
-}
-
-.game__score li,
-.game__player p{
-    &::before,
-    &::after{
-        content: "";
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        border-radius: 2px;
-    }
-
-    &::before{
-        border: 10px solid;
-        border-color: inherit;
-    }
-
-    &::after{
-        border: solid transparent;
-        border-width: 10px 0 10px 8px;
-        border-left-color: inherit;
-    }
+    font-size: var(--score-font-size);
+    line-height: var(--score-font-size);
 }
 
 .game__score li{
-    position: relative;
-    margin-left: 31px;
-
-    &::before{
-        left: -31px;
-    }
-
-    &::after{
-        left: -12px;
-    }
-}
-
-.game__player p{
-    position: relative;
-
-    &::before{
-        right: -31px;
-    }
-
-    &::after{
-        right: -38px;
-    }
+    padding-left: var(--score-padding-left);
+    background-size: var(--score-bg-size);
+    background-position: left center;
+    background-repeat: no-repeat;
 }
 
 .game__player{
     color: white;
     font-size: 26px;
-    margin-right: 39px;
     letter-spacing: var(--letter-spacing);
 
-    &--blue{
-        &::after{
-            color: $player-blue;
-        }
+    &--blue,
+    &--orange{
+        background-size: var(--score-bg-size);
+        background-position: right center;
+        background-repeat: no-repeat;
+        padding-right: var(--player-padding-right);
+    }
 
-        &::before{
-            color: $player-blue;
-        }
+    &--blue{
+        background-image: var(--score-player-blue);
     }
 
     &--orange{
-        &::after{
-            color: $player-orange;
-        }
-
-        &::before{
-            color: $player-orange;
-        }
+        background-image: var(--score-player-orange);
     }
 }
 
@@ -192,6 +149,7 @@
     .button__text{
         color: white;
         font-size: 24px;
+        font-family: var(--font-primary-bold);
     }
 
     .button__text--sm{
