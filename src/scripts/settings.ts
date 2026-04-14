@@ -1,3 +1,4 @@
+import { themeImages, Theme } from '../config/theme-images';
 import { GameSettings } from '../types/interfaces';
 import { getElement } from '../utils/dom';
 
@@ -39,7 +40,9 @@ function initSettings(){
     })
     themeInputs.forEach(input => {
         input.addEventListener('change', () => {
-            settings.theme = input.value;
+            if(isTheme(input.value)){
+                settings.theme = input.value;
+            }
             updateSummary();
         });
     })
@@ -56,6 +59,10 @@ function initSettings(){
         });
     })
     updateSummary();
+}
+
+function isTheme(value: string): value is Theme {
+    return value in themeImages;
 }
 
 function updateSummary(){

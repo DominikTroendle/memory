@@ -1,5 +1,7 @@
+import { Theme } from "../config/theme-images"
+
 export interface GameSettings {
-    theme: string,
+    theme: Theme,
     player: string,
     boardSize: number
 }

@@ -1,27 +1,9 @@
+import { themeImages } from '../config/theme-images';
 import { Card } from '../types/interfaces';
 import { GameSettings } from '../types/interfaces';
 import { getElement } from '../utils/dom';
 
-const bgImages = [
-    'angular-icon.png',
-    'bootstrap-icon.png',
-    'css-icon.png',
-    'django-icon.png',
-    'firebase-icon.png',
-    'github-icon.png',
-    'git-icon.png',
-    'html-icon.png',
-    'js-icon.png',
-    'nodejs-icon.png',
-    'python-icon.png',
-    'react-icon.png',
-    'sass-icon.png',
-    'sql-icon.png',
-    'terminal-icon.png',
-    'ts-icon.png',
-    'vscode-icon.png',
-    'vue-icon.png'
-];
+let bgImages: readonly string[];
 
 let body: HTMLBodyElement;
 let field: HTMLElement;
@@ -75,6 +57,7 @@ function getGameSettings(): GameSettings {
 function initGame() {
     applyTheme();
     setPlayer();
+    bgImages = themeImages[gameSettings.theme];
     cards = createCardArray();
     renderField();
     addCardFunction();
