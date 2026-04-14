@@ -2,6 +2,8 @@
 @use '../abstract/variables' as *;
 @use '../base/font' as *;
 
+@use '../themes/coding';
+
 .button{
     @include flex-center(row, 20px);
     border: unset;
@@ -14,7 +16,7 @@
     }
 
     &__text{
-        font-family: 'Red Rose Bold';
+        font-family: var(--font-primary-bold);
         font-size: 40px;
         color: $background;
     }

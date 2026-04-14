@@ -1,9 +1,13 @@
+@use '../themes/coding';
+
 .card{
-    height: 120px;
-    aspect-ratio: 1/1;
+    height: var(--card-height);
+    aspect-ratio: var(--card-aspect-ratio);
     background-color: transparent;
     border: none;
+    border-radius: var(--card-border-radius);
     cursor: pointer;
+    filter: var(--card-filter);
 
     &__matched{
         visibility: hidden;
@@ -21,9 +25,7 @@
     &__face{
         position: absolute;
         inset: 0;
-        background-image:
-                        url("/assets/da-icon.png"),
-                        linear-gradient(215deg,#4DD5BC 0%, #286F62 60%, #10443a 100%);
+        background-image: var(--card-background-image);
         background-position: center;
         background-repeat: no-repeat;
         backface-visibility: hidden;

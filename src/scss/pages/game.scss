@@ -2,6 +2,8 @@
 @use '../abstract/variables' as *;
 @use '../base/font' as *;
 
+@use '../themes/coding';
+
 .no-scroll{
     overflow: hidden;
 }
@@ -25,9 +27,10 @@
 
     &__card{
         @include flex-center(column, 54px);
-        background: white;
+        background: var(--overlay-background);
         padding: 40px;
-        max-width: 540px;
+        max-width: var(--overlay-max-width);
+        border-radius: var(--border-radius);
         transform: translateY(-250%);
         transition: transform 0.3s ease-in-out;
         &--show{
@@ -37,7 +40,7 @@
 
     &__text{
         color: black;
-        font-family: 'Red Rose Bold';
+        font-family: var(--font-primary-bold);
         font-size: 32px;
         text-align: center;
     }
@@ -52,26 +55,29 @@
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    background-color: $background;
+    background-color: var(--background);
     padding-bottom: 54px;
 }
 
 .game__header{
     @include flex-space();
-    align-items: flex-end;
-    width: 100%;
-    padding: 50px 100px;
-    font-family: 'Red Rose';
+    align-items: center;
+    width: calc(100% - 200px);
+    padding: 0;
+    margin: 50px 0;
+    font-family: var(--font-primary);
     position: sticky;
     top: 0;
     z-index: 2;
-    background-color: $background;
-    box-shadow: 0px 4px 9px 4px $background;
+    background-color: var(--background);
+    box-shadow: 0px 4px 9px 4px var(--background);
+    border-radius: var(--border-radius);
 }
 
 .game__score{
-    background-color: $tertiary;
+    background-color: var(--score-background);
     padding: 17px 20px;
+    border-radius: var(--border-radius);
 
     &--blue{
         color: $player-blue;
@@ -83,7 +89,7 @@
 }
 
 .game__score ul{
-    @include flex-start(row, 20px);
+    @include flex-start(row, var(--score-gap));
     list-style: none;
     font-size: 24px;
 }
@@ -163,16 +169,17 @@
 }
 
 .button__exit{
-    background-color: $tertiary;
-    border: 2px solid $secondary;
+    background-color: var(--button-background);
+    border: 2px solid var(--button-highlight);
+    border-radius: var(--border-radius);
     gap: 10px;
     padding: 16px 24px;
 
     &--bgSolid{
-        background-color:#66CFBC;
+        background-color: var(--button-solid);
 
         &:hover{
-            background-color: rgba($color: #66CFBC, $alpha: 0.7);
+            background-color: var(--button-solid-hover);
         }
     }
 
@@ -189,7 +196,7 @@
         font-size: 20px;
     }
 
-    .button__text--turqouise{
+    .button__text--colored{
         color: $secondary;
     }
 
@@ -198,9 +205,9 @@
     }
 
     &:hover{
-        border: 3px solid $secondary;
+        border: 3px solid var(--button-highlight);
         padding: 15px 23px;
-        box-shadow: 0 0 20px $tertiary;
+        box-shadow: 0 0 20px var(--button-background);
 
         .button__icon{
             filter: drop-shadow(1px 1px 2px rgba($color: #000000, $alpha: 1));

@@ -1,3 +1,38 @@
-.theme-codingtheme{
-    
+.theme-codevibestheme{
+    //colors
+    --background: #303131;
+    --button-background: #86E9D633;
+    --button-highlight: #4DD5BC;
+    --button-solid: #66CFBC;
+    --button-solid-hover: #66CFBCB3;
+    --overlay-background: white;
+    --score-background: #86E9D633;
+
+    //fonts
+    --font-primary: 'Red Rose';
+    --font-primary-bold: 'Red Rose Bold';
+    --font-secondary: 'Almari';
+    --font-secondary-bold: 'Almari Bold';
+
+    //generic
+    --border-radius: 0px;
+
+    //card
+    --card-aspect-ratio: 1/1;
+    --card-background-image:
+                            url("/assets/da-icon.png"),
+                            linear-gradient(215deg,#4DD5BC 0%, #286F62 60%, #10443a 100%);
+    --card-border-radius: 0px;
+    --card-filter: none;
+    --card-height: 120px;
+
+    //overlay
+    --overlay-max-width: 540px;
+
+    //score
+    --score-gap: 20px;
 }
+
+/* .theme-codevibestheme .game__currentPlayer--codingTheme{
+    display: none;
+} */
