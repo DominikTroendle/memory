@@ -2,12 +2,15 @@
 @use '../abstract/variables' as *;
 @use '../base/font' as *;
 
+@use '../themes/coding';
+@use '../themes/gaming';
+
 .endscreen{
     @include flex-center(column, 64px);
     justify-content: flex-start;
     height: 100vh;
     width: 100%;
-    background-color: $background;
+    background-color: var(--background);
     &__confetti{
         width: 1240px;
         height: 360px;
@@ -16,19 +19,21 @@
 
 .endscreen__header{
     @include flex-center(column, 10px);
-    margin-top: -54px;
+    margin-top: var(--end-margin-top);
 }
 
 .endscreen__subheadline{
-    font-family: 'Red Rose';
+    font-family: var(--font-primary);
+    font-size: var(--end-subheadline-font-size);
     font-weight: 100;
     color: white;
 }
 
 .endscreen__headline{
-    font-family: 'Red Rose Bold';
-    font-size: 60px;
+    font-family: var(--font-primary-bold);
+    font-size: var(--end-headline-font-size);
     color: $player-blue;
+    filter: var(--end-filter);
 
     &--orange{
         color: $player-orange;

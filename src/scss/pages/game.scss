@@ -65,10 +65,9 @@
     align-items: center;
     width: calc(100% - 200px);
     padding: var(--header-padding);
-    margin: var(--header-margin);
     font-family: var(--font-primary);
     position: sticky;
-    top: 0;
+    top: 50px;
     z-index: 2;
     background-color: var(--header-background);
     box-shadow: 0px 4px 9px 4px var(--background);
@@ -107,23 +106,23 @@
 
 .game__player{
     color: white;
-    font-size: 26px;
+    font-size: var(--player-font-size);
     letter-spacing: var(--letter-spacing);
 
     &--blue,
     &--orange{
-        background-size: var(--score-bg-size);
+        background-size: var(--player-bg-size);
         background-position: right center;
         background-repeat: no-repeat;
         padding-right: var(--player-padding-right);
     }
 
     &--blue{
-        background-image: var(--score-player-blue);
+        background-image: var(--player-blue);
     }
 
     &--orange{
-        background-image: var(--score-player-orange);
+        background-image: var(--player-orange);
     }
 }
 
@@ -177,6 +176,7 @@
 
 .game__field{
     display: grid;
+    padding-top: var(--field-padding);
 
     &--small{
         width: var(--board-width-sm);

@@ -5,7 +5,7 @@
     --button-highlight: #E71C4F;
     --button-solid: #ED1B76;
     --button-solid-hover: white;
-    --header-background: #FD96C933;
+    --header-background: #545d75;
     --overlay-background: white;
     --score-background: white;
 
@@ -28,9 +28,17 @@
     --card-height: 120px;
     --card-width: 105px;
 
+    //end-screen
+    --end-headline-font-size: 64px;
+    --end-subheadline-font-size: 28px;
+    --end-margin-top: 0;
+    --end-filter: drop-shadow(4px 4px 2px rgb(0, 0, 0, 0.4));
+
+    //field
+    --field-padding: 20px;
+
     //header
     --header-padding: 24px;
-    --header-margin: 26px 0;
 
     //overlay
     --overlay-max-width: 540px;
@@ -44,20 +52,38 @@
     --score-player-orange: url("/assets/winner-orange.png");
 
     //player
-    --player-padding-right: 0;
+    --player-padding-right: 58px;
+    --player-blue: url("/assets/player-gaming-blue.png");
+    --player-orange: url("/assets/player-gaming-orange.png");
+    --player-bg-size: 40px 40px;
+    --player-font-size: 32px;
 }
 
 .theme-gamingtheme .game__currentPlayer--codingTheme{
     display: none;
 }
 
-.theme-gamingtheme .button__exit{
-    &--bgSolid{
-        &:hover{
-            .button__text{
-                color: #ED1B76;
-            }
-        }
+.theme-gamingtheme .endscreen{
+    justify-content: center;
+}
+
+.theme-gamingtheme .endscreen__confetti{
+    display: none;
+}
+
+.theme-gamingtheme .button__exit--bgSolid:hover{
+    filter: drop-shadow(2px 2px 2px rgb(47, 46, 46, 0.4));
+
+    .button__text{
+        color: #ED1B76;
+    }
+}
+
+.theme-gamingtheme .button__exit:hover{
+    background-color: #ED1B7624;
+
+    .button__icon{
+        filter: brightness(0) saturate(100%) invert(22%) sepia(47%) saturate(5641%) hue-rotate(333deg) brightness(91%) contrast(98%);
     }
 }
 
@@ -67,4 +93,8 @@
     &::before{
         display: none;
     }
+}
+
+.theme-gamingtheme .game__header {
+    font-weight: 700;
 }

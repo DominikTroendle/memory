@@ -17,6 +17,7 @@
 
 .settings__right{
     @include flex-space(column);
+    gap: 40px;
     align-items: flex-end;
     height: 100%;
 }
@@ -82,6 +83,7 @@
     border-radius: 50%;
     display: grid;
     place-content: center;
+    cursor: pointer;
 
     &::before{
         content: "";

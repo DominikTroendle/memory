@@ -1,8 +1,12 @@
+import { GameSettings } from "../types/interfaces";
 import { getElement } from "../utils/dom";
+
+let gameSettings: GameSettings;
 
 let finalScoreBlue: string;
 let finalScoreOrange: string;
 
+let body: HTMLBodyElement;
 let finalScoreDisplayBlue: HTMLSpanElement;
 let finalScoreDisplayOrange: HTMLSpanElement;
 let winnerRef: HTMLHeadingElement;
@@ -11,6 +15,7 @@ let winnerImgRef: HTMLImageElement;
 document.addEventListener('DOMContentLoaded', () => {
     getSessionStorage();
     init();
+    applyTheme();
     if(window.location.href.includes('game-ended')){
         displayGameWinner();
     } else {
@@ -18,16 +23,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-function init() {
-    winnerRef = getElement<HTMLHeadingElement>('winner');
-    winnerImgRef = getElement<HTMLImageElement>('winner-img');
-}
-
 function getSessionStorage() {
     const storedScoreBlue = sessionStorage.getItem('scoreBlue');
     const storedScoreOrange = sessionStorage.getItem('scoreOrange');
     finalScoreBlue = JSON.parse(storedScoreBlue || "0");
     finalScoreOrange = JSON.parse(storedScoreOrange || "0");
+}
+
+function init() {
+    body = getElement<HTMLBodyElement>('body');
+    winnerRef = getElement<HTMLHeadingElement>('winner');
+    winnerImgRef = getElement<HTMLImageElement>('winner-img');
+    gameSettings = getGameSettings();
+}
+
+function getGameSettings(): GameSettings {
+    const data = sessionStorage.getItem('gameSettings');
+    if(!data){
+        return {
+            theme: "Code Vibes Theme",
+            player: "Blue",
+            boardSize: 16
+        };
+    };
+    return JSON.parse(data) as GameSettings;
+}
+
+function applyTheme() {
+    const theme = gameSettings.theme.toLocaleLowerCase().replace(/\s/g, "");
+    body.classList.add(`theme-${theme}`);
 }
 
 function displayGameWinner() {

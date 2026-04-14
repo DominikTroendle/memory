@@ -17,8 +17,7 @@ const boardInputs = document.querySelectorAll<HTMLInputElement>('input[name="boa
 
 const themePreviewMap: Record<string, string> = {
     CodeVibesTheme: '../assets/theme-coding_preview.png',
-    GamingTheme: '../assets/theme-gaming_preview.png',
-    DAProjectsTheme: '../assets/theme-projects_preview.png'
+    GamingTheme: '../assets/theme-gaming_preview.png'
 }
 
 document.addEventListener('DOMContentLoaded', () => {

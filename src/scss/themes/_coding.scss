@@ -30,9 +30,16 @@
     --card-height: 120px;
     --card-width: 120px;
 
+    //end-screen
+    --end-headline-font-size: 60px;
+    --end-subheadline-font-size: 40px;
+    --end-margin-top: -54px;
+
+    //field
+    --field-padding: 10px;
+
     //header
-    --header-padding: 0;
-    --header-margin: 50px 0;
+    --header-padding: 0 0 50px 0;
 
     //overlay
     --overlay-max-width: 540px;
@@ -47,4 +54,8 @@
 
     //player
     --player-padding-right: 39px;
+    --player-blue: url("/assets/player-coding-blue.png");
+    --player-orange: url("/assets/player-coding-orange.png");
+    --player-bg-size: 24px 20px;
+    --player-font-size: 26px;
 }
