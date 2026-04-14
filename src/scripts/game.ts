@@ -172,9 +172,11 @@ function flipCard(card: HTMLButtonElement, id: number) {
 
 function checkMatch() {
     if(currentlyFlipped.length != 2) return;
-    if(currentlyFlipped[0].source == currentlyFlipped[1].source) {
-        currentlyFlipped[0].matched = true;
-        currentlyFlipped[1].matched = true;
+    const [card1, card2] = currentlyFlipped;
+    if(card1.source == card2.source) {
+        card1.matched = true;
+        card2.matched = true;
+        applyMatchedClass([card1.id, card2.id]);
         updateScore();
     } else {
         resetCards();
@@ -182,6 +184,15 @@ function checkMatch() {
     }
     currentlyFlipped = [];
     checkGameEnd();
+}
+
+function applyMatchedClass(cardIds: number[]) {
+    cardIds.forEach(id => {
+        const el = document.getElementById(String(id));
+        setTimeout(() => {
+            el?.classList.add('card__matched');
+        }, 150);
+    });
 }
 
 function resetCards() {

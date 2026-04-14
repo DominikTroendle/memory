@@ -27,8 +27,10 @@
                             linear-gradient(215deg,#4DD5BC 0%, #286F62 60%, #10443a 100%);
     --card-border-radius: 0px;
     --card-filter: none;
+    --card-filter-matched: drop-shadow(0px 0px 8px rgb(77, 213, 188, 0.5));
     --card-height: 120px;
     --card-width: 120px;
+    --card-matched-border: 4px;
 
     //end-screen
     --end-headline-font-size: 60px;
@@ -60,4 +62,8 @@
     --player-orange: url("/assets/player-coding-orange.png");
     --player-bg-size: 24px 20px;
     --player-font-size: 26px;
+}
+
+.theme-codevibestheme .gameover__headline{
+    display: none;
 }

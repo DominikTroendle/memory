@@ -61,21 +61,31 @@ function applyTheme() {
 function displayGameWinner() {
     const winner = finalScoreBlue > finalScoreOrange ? "blue" : "orange";
     const draw = finalScoreBlue == finalScoreOrange;
-    const isGamingTheme = gameSettings.theme === "Gaming Theme";
     if(draw) {
-        winnerHeadlineRef.innerHTML = "It's a";
-        winnerRef.innerHTML = "DRAW";
-        winnerRef.classList.add('endscreen__headline--draw');
-        winnerImgRef.src = isGamingTheme ? '../assets/winner-gaming.png' : '../assets/winner-draw.png';
-        return;
-    }
-    if(isGamingTheme) {
-        winnerRef.innerHTML = winner === "blue" ? "Blue Player" : "Orange Player";
-        winnerImgRef.src = "../assets/winner-gaming.png";
+        handleDraw();
     } else {
-        winnerRef.innerHTML = winner.toUpperCase();
-        winnerImgRef.src = `../assets/winner-${winner}.png`;
+        handleWinner(winner);
     }
+}
+
+function handleDraw() {
+    const isGamingTheme = gameSettings.theme === "Gaming Theme";
+    winnerHeadlineRef.innerHTML = "It's a";
+    winnerRef.innerHTML = "DRAW";
+    winnerRef.classList.add('endscreen__headline-draw');
+    winnerImgRef.src = isGamingTheme
+        ? '../assets/winner-gaming.png'
+        : '../assets/winner-draw.png';
+}
+
+function handleWinner(winner: "blue" | "orange") {
+    const isGamingTheme = gameSettings.theme === "Gaming Theme";
+    winnerRef.innerHTML = isGamingTheme
+        ? (winner === "blue" ? "Blue Player" : "Orange Player")
+        : winner.toUpperCase();
+    winnerImgRef.src = isGamingTheme
+        ? '../assets/winner-gaming.png'
+        : `../assets/winner-${winner}.png`;
     if(winner === "orange") {
         winnerRef.classList.add('endscreen__headline--orange');
     }

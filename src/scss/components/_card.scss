@@ -9,8 +9,9 @@
     filter: var(--card-filter);
 
     &__matched{
-        visibility: hidden;
-        pointer-events: none;
+        border: var(--card-matched-border) solid var(--button-highlight);
+        border-radius: var(--card-inner-border-radius);
+        filter: var(--card-filter-matched);
     }
     
     &__inner{
