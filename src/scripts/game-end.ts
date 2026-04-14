@@ -10,6 +10,7 @@ let body: HTMLBodyElement;
 let finalScoreDisplayBlue: HTMLSpanElement;
 let finalScoreDisplayOrange: HTMLSpanElement;
 let winnerRef: HTMLHeadingElement;
+let winnerHeadlineRef: HTMLHeadingElement;
 let winnerImgRef: HTMLImageElement;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -35,6 +36,7 @@ function init() {
     gameSettings = getGameSettings();
     if(window.location.href.includes('game-ended')){
         winnerRef = getElement<HTMLHeadingElement>('winner');
+        winnerHeadlineRef = getElement<HTMLHeadingElement>('winner-headline');
         winnerImgRef = getElement<HTMLImageElement>('winner-img');
     }
 }
@@ -58,7 +60,15 @@ function applyTheme() {
 
 function displayGameWinner() {
     const winner = finalScoreBlue > finalScoreOrange ? "blue" : "orange";
+    const draw = finalScoreBlue == finalScoreOrange;
     const isGamingTheme = gameSettings.theme === "Gaming Theme";
+    if(draw) {
+        winnerHeadlineRef.innerHTML = "It's a";
+        winnerRef.innerHTML = "DRAW";
+        winnerRef.classList.add('endscreen__headline--draw');
+        winnerImgRef.src = isGamingTheme ? '../assets/winner-gaming.png' : '../assets/winner-draw.png';
+        return;
+    }
     if(isGamingTheme) {
         winnerRef.innerHTML = winner === "blue" ? "Blue Player" : "Orange Player";
         winnerImgRef.src = "../assets/winner-gaming.png";
