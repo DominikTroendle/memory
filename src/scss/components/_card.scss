@@ -2,10 +2,9 @@
 
 .card{
     height: var(--card-height);
-    aspect-ratio: var(--card-aspect-ratio);
+    width: var(--card-width);
     background-color: transparent;
     border: none;
-    border-radius: var(--card-border-radius);
     cursor: pointer;
     filter: var(--card-filter);
 
@@ -29,6 +28,7 @@
         background-position: center;
         background-repeat: no-repeat;
         backface-visibility: hidden;
+        border-radius: var(--card-border-radius);
 
         &--back{
             transform: rotateY(180deg);

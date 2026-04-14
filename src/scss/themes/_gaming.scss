@@ -1,0 +1,54 @@
+.theme-gamingtheme{
+    //colors
+    --background: #294F60;
+    --button-background: #ED1B7614;
+    --button-highlight: #E71C4F;
+    --button-solid: #ED1B76;
+    --button-solid-hover: white;
+    --header-background: #FD96C933;
+    --overlay-background: white;
+    --score-background: white;
+
+    //fonts
+    --font-primary: 'Orbitron';
+    --font-primary-bold: 'Orbitron Bold';
+
+    //generic
+    --border-radius: 10px;
+    --letter-spacing: 7%;
+
+    //board
+    --board-width-sm: 465px;
+    --board-width-lg: 680px;
+
+    //card
+    --card-background-image: linear-gradient(215deg,#ED1B76 0%, #491a2e 80%,#0A2835 100%);
+    --card-border-radius: 12px;
+    --card-filter: drop-shadow(4px 4px 5px rgb(0, 0, 0, 0.4));
+    --card-height: 120px;
+    --card-width: 105px;
+
+    //header
+    --header-padding: 24px;
+    --header-margin: 26px 0;
+
+    //overlay
+    --overlay-max-width: 540px;
+
+    //score
+    --score-gap: 40px;
+}
+
+.theme-gamingtheme .game__currentPlayer--codingTheme{
+    display: none;
+}
+
+.theme-gamingtheme .button__exit{
+    &--bgSolid{
+        &:hover{
+            .button__text{
+                color: #ED1B76;
+            }
+        }
+    }
+}

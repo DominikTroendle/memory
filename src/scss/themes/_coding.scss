@@ -5,26 +5,35 @@
     --button-highlight: #4DD5BC;
     --button-solid: #66CFBC;
     --button-solid-hover: #66CFBCB3;
+    --header-background: #303131;
     --overlay-background: white;
     --score-background: #86E9D633;
+    --text-hover: white;
 
     //fonts
     --font-primary: 'Red Rose';
     --font-primary-bold: 'Red Rose Bold';
-    --font-secondary: 'Almari';
-    --font-secondary-bold: 'Almari Bold';
 
     //generic
     --border-radius: 0px;
+    --letter-spacing: normal;
+
+    //board
+    --board-width-sm: 525px;
+    --board-width-lg: 770px;
 
     //card
-    --card-aspect-ratio: 1/1;
     --card-background-image:
                             url("/assets/da-icon.png"),
                             linear-gradient(215deg,#4DD5BC 0%, #286F62 60%, #10443a 100%);
     --card-border-radius: 0px;
     --card-filter: none;
     --card-height: 120px;
+    --card-width: 120px;
+
+    //header
+    --header-padding: 0;
+    --header-margin: 50px 0;
 
     //overlay
     --overlay-max-width: 540px;
@@ -32,7 +41,3 @@
     //score
     --score-gap: 20px;
 }
-
-/* .theme-codevibestheme .game__currentPlayer--codingTheme{
-    display: none;
-} */

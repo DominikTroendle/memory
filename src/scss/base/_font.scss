@@ -31,3 +31,21 @@
   font-weight: 700;
   src: url('/fonts/almarai-v19-latin/almarai-v19-latin-700.woff2') format('woff2');
 }
+
+/* orbitron-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/orbitron-v35-latin/orbitron-v35-latin-regular.woff2') format('woff2');
+}
+
+/* orbitron-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Orbitron Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/orbitron-v35-latin/orbitron-v35-latin-700.woff2') format('woff2');
+}

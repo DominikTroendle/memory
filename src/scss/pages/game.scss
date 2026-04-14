@@ -3,6 +3,7 @@
 @use '../base/font' as *;
 
 @use '../themes/coding';
+@use '../themes/gaming';
 
 .no-scroll{
     overflow: hidden;
@@ -39,7 +40,7 @@
     }
 
     &__text{
-        color: black;
+        color: var(--background);
         font-family: var(--font-primary-bold);
         font-size: 32px;
         text-align: center;
@@ -63,13 +64,13 @@
     @include flex-space();
     align-items: center;
     width: calc(100% - 200px);
-    padding: 0;
-    margin: 50px 0;
+    padding: var(--header-padding);
+    margin: var(--header-margin);
     font-family: var(--font-primary);
     position: sticky;
     top: 0;
     z-index: 2;
-    background-color: var(--background);
+    background-color: var(--header-background);
     box-shadow: 0px 4px 9px 4px var(--background);
     border-radius: var(--border-radius);
 }
@@ -146,6 +147,7 @@
     color: white;
     font-size: 26px;
     margin-right: 39px;
+    letter-spacing: var(--letter-spacing);
 
     &--blue{
         &::after{
@@ -197,7 +199,7 @@
     }
 
     .button__text--colored{
-        color: $secondary;
+        color: var(--button-highlight);
     }
 
     .button__text--black{
@@ -219,13 +221,13 @@
     display: grid;
 
     &--small{
-        width: 525px;
+        width: var(--board-width-sm);
         grid-template-columns: repeat(4, 1fr);
         gap: 15px;
     }
 
     &--large{
-        width: 770px;
+        width: var(--board-width-lg);
         grid-template-columns: repeat(6, 1fr);
         gap: 10px;
     }
