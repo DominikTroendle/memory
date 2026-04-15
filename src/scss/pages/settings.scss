@@ -104,10 +104,48 @@
 
 .settings__form label{
     @include flex-center(row, 10px);
+    position: relative;
     margin-left: 40px;
     font-family: 'Almarai';
     font-size: 20px;
     cursor: pointer;
+
+    &::after{
+        display: none;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -70px;
+        border: 6px solid $primary;
+        transform: rotate(45deg) translateY(70%);
+    }
+
+    &::before{
+        display: none;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -60px;
+        width: 50px;
+        border-bottom: 4px solid $primary;
+        transform: translateY(250%);
+    }
+
+    &:hover{
+        font-weight: 600;
+        &::before,
+        &::after{
+            display: block;
+        }
+    }
+
+    &.selected{
+        &::before,
+        &::after{
+            display: block;
+        }
+    }
+
     @include respond(md){
         margin-left: clamp(32px, calc(40 / 1024 * 100vw), 40px);
         font-size: clamp(16px, calc(20 / 1024 * 100vw), 20px);
@@ -211,6 +249,7 @@
     padding: 10px 15px;
     gap: 8px;
     max-height: 50px;
+    width: 121px;
     align-self: flex-start;
     @include respond(md){
         align-self: flex-end;

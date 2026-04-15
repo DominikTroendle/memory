@@ -42,11 +42,13 @@ function initSettings(){
         sessionStorage.removeItem('scoreBlue');
         sessionStorage.removeItem('scoreOrange');
     })
+    initInputs();
+}
+
+function initInputs(){
     themeInputs.forEach(input => {
         input.addEventListener('change', () => {
-            if(isTheme(input.value)){
-                settings.theme = input.value;
-            }
+            if(isTheme(input.value)) settings.theme = input.value;
             updateSummary(summaryTheme, 'theme');
         });
     })
