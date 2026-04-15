@@ -1,3 +1,6 @@
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
 .theme-gamingtheme{
     //colors
     --background: #294F60;
@@ -18,8 +21,8 @@
     --letter-spacing: 7%;
 
     //board
-    --board-width-sm: 465px;
-    --board-width-lg: 680px;
+    --board-width-sm: 225px;
+    --board-width-lg: 225px;
 
     //card
     --card-background-image: linear-gradient(215deg,#ED1B76 0%, #491a2e 80%,#0A2835 100%);
@@ -42,10 +45,7 @@
     --field-padding: 20px;
 
     //header
-    --header-padding: 24px;
-
-    //overlay
-    --overlay-max-width: 540px;
+    --header-padding: clamp(14px, calc(24 / 360 * 100vw), 24px);
 
     //score
     --score-bg-size: 20px 28px;
@@ -60,7 +60,22 @@
     --player-blue: url("/assets/player-gaming-blue.png");
     --player-orange: url("/assets/player-gaming-orange.png");
     --player-bg-size: 40px 40px;
-    --player-font-size: 32px;
+    --player-font-size: clamp(22px, calc(32 / 480 * 100vw), 32px);
+    --player-line-height: 40px;
+
+    @include respond(xs){
+        --board-width-sm: 345px;
+        --board-width-lg: 345px;
+    }
+
+    @include respond(sm){
+        --board-width-sm: 465px;
+        --board-width-lg: 465px;
+    }
+
+    @include respond(lg){
+        --board-width-lg: 680px;
+    }
 }
 
 .theme-gamingtheme .game__currentPlayer--codingTheme{

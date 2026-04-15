@@ -18,16 +18,24 @@
 }
 
 .gameover__hero{
-    width: 990px;
-    height: 125px;
-    margin-bottom: 100px;
+    width: clamp(300px, calc(880 / 1024 * 100vw), 880px);
+    aspect-ratio: 990 / 125;
+    margin-bottom: clamp(20px, calc(100 / 1024 * 100vw), 100px);
+    @include respond(lg){
+        width: 990px;
+        margin-bottom: 100px;
+    }
 }
 
 .gameover__headline{
-    font-size: 124px;
+    font-size: clamp(80px, calc(124 / 1024 * 100vw), 124px);
     font-family: var(--font-primary-bold);
     color: var(--button-solid);
     margin-bottom: var(--end-margin-bottom);
+    text-align: center;
+    @include respond(lg){
+        font-size: 124px;
+    }
 }
 
 .gameover__subheadline{

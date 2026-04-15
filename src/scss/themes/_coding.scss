@@ -1,3 +1,6 @@
+@use '../abstract/mixins' as *;
+@use '../abstract/variables' as *;
+
 .theme-codevibestheme{
     //colors
     --background: #303131;
@@ -18,8 +21,8 @@
     --letter-spacing: normal;
 
     //board
-    --board-width-sm: 525px;
-    --board-width-lg: 770px;
+    --board-width-sm: 255px;
+    --board-width-lg: 255px;
 
     //card
     --card-background-image:
@@ -33,9 +36,9 @@
     --card-matched-border: 4px;
 
     //end-screen
-    --end-headline-font-size: 60px;
-    --end-subheadline-font-size: 40px;
-    --end-margin-top: -54px;
+    --end-headline-font-size: clamp(50px, calc(60 / 576 * 100vw), 60px);
+    --end-subheadline-font-size: clamp(30px, calc(40 / 576 * 100vw), 40px);
+    --end-margin-top: clamp(-20px, calc(-54 / 1024 * 100vw), -54px);
     --end-margin-bottom: 0px;
     --end-filter: none;
 
@@ -43,10 +46,7 @@
     --field-padding: 10px;
 
     //header
-    --header-padding: 0 0 50px 0;
-
-    //overlay
-    --overlay-max-width: 540px;
+    --header-padding: 50px 0;
 
     //score
     --score-bg-size: 24px 20px;
@@ -62,6 +62,23 @@
     --player-orange: url("/assets/player-coding-orange.png");
     --player-bg-size: 24px 20px;
     --player-font-size: 26px;
+    --player-line-height: normal;
+
+    @include respond(xs){
+        --board-width-sm: 390px;
+        --board-width-lg: 390px;
+    }
+
+    @include respond(sm){
+        --board-width-sm: 525px;
+        --board-width-lg: 525px;
+        --overlay-max-width: 540px;
+    }
+
+    @include respond(lg){
+        --board-width-lg: 770px;
+        --header-padding: 0 0 50px 0;
+    }
 }
 
 .theme-codevibestheme .gameover__headline{
