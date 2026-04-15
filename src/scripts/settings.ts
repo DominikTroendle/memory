@@ -10,7 +10,9 @@ let settings: GameSettings = {
 
 let startButton: HTMLButtonElement;
 let previewImage: HTMLImageElement;
-let summaryList: HTMLUListElement;
+let summaryTheme: HTMLLIElement;
+let summaryPlayer: HTMLLIElement;
+let summaryBoard: HTMLLIElement;
 
 const themeInputs = document.querySelectorAll<HTMLInputElement>('input[name="theme"]');
 const playerInputs = document.querySelectorAll<HTMLInputElement>('input[name="player"]');
@@ -29,7 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function initElRefs(){
     startButton = getElement<HTMLButtonElement>('button-start');
     previewImage = getElement<HTMLImageElement>('preview');
-    summaryList = getElement<HTMLUListElement>('summary');
+    summaryTheme = getElement<HTMLLIElement>('summary-theme');
+    summaryPlayer = getElement<HTMLLIElement>('summary-player');
+    summaryBoard = getElement<HTMLLIElement>('summary-board');
 }
 
 function initSettings(){
@@ -43,34 +47,41 @@ function initSettings(){
             if(isTheme(input.value)){
                 settings.theme = input.value;
             }
-            updateSummary();
+            updateSummary(summaryTheme, 'theme');
         });
     })
     playerInputs.forEach(input => {
         input.addEventListener('change', () => {
             settings.player = input.value;
-            updateSummary();
+            updateSummary(summaryPlayer, 'player');
         });
     })
     boardInputs.forEach(input => {
         input.addEventListener('change', () => {
             settings.boardSize = Number(input.value);
-            updateSummary();
+            updateSummary(summaryBoard, 'boardSize');
         });
     })
-    updateSummary();
 }
 
 function isTheme(value: string): value is Theme {
     return value in themeImages;
 }
 
-function updateSummary(){
+function updateSummary(element: HTMLLIElement, key: keyof GameSettings){
     const theme = settings.theme.replace(/\s/g, "");
     previewImage.src = themePreviewMap[theme];
-    summaryList.innerHTML = `
-        <li>${settings.theme}</li>
-        <li>${settings.player}</li>
-        <li>${settings.boardSize} Cards</li>
-        `
+    if(key === "boardSize"){
+        element.innerHTML = `${settings[key]} Cards`;
+    } else {
+        element.innerHTML = `${settings[key]}`;
+    }
+    if(inputsValid()) startButton.classList.remove('button--disabled');
+}
+
+function inputsValid(): boolean{
+    const themeSelected = Array.from(themeInputs).some(input => input.checked);
+    const playerSelected = Array.from(playerInputs).some(input => input.checked);
+    const boardSelected = Array.from(boardInputs).some(input => input.checked);
+    return themeSelected && playerSelected && boardSelected;
 }

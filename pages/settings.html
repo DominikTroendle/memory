@@ -19,7 +19,7 @@
                         Game Themes
                     </legend>
                     <label>
-                        <input type="radio" name="theme" value="Code Vibes Theme" checked>
+                        <input type="radio" name="theme" value="Code Vibes Theme">
                         Code Vibes Theme
                     </label>
                     <label>
@@ -33,7 +33,7 @@
                         Choose Player
                     </legend>
                     <label>
-                        <input type="radio" name="player" value="Blue" checked>
+                        <input type="radio" name="player" value="Blue">
                         Blue
                     </label>
                     <label>
@@ -47,7 +47,7 @@
                         Board Size
                     </legend>
                     <label>
-                        <input type="radio" name="board" value="16" checked>
+                        <input type="radio" name="board" value="16">
                         16 Cards
                     </label>
                     <label>
@@ -63,12 +63,12 @@
             <div class="settings__right">
                 <img class="settings__preview" id="preview" src="/assets/theme-coding_preview.png" alt="theme-preview">
                 <section class="settings__summary">
-                    <ul id="summary">
-                        <li>Code Vibes Theme</li>
-                        <li>Blue</li>
-                        <li>16 Cards</li>
+                    <ul>
+                        <li id="summary-theme">Theme</li>
+                        <li id="summary-player">Player</li>
+                        <li id="summary-board">Board</li>
                     </ul>
-                    <a class="button button--start button--primary" id="button-start" href="game.html">
+                    <a class="button button--start button--disabled button--primary" id="button-start" href="game.html">
                         <img class="button__icon" src="/assets/play_tilted.png" alt="icon-play">
                         <span class="button__text">Start</span>
                     </a>
