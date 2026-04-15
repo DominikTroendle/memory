@@ -2,7 +2,16 @@ $background: #303131;
 $background-light: #F6F6F6;
 $primary: #F0EA6E;
 $secondary: #4DD5BC;
-// $tertiary: #86E9D633;
 $disabled: #DBDBD6;
 $player-blue: #2BB1FF;
 $player-orange: #F58E39;
+
+$breakpoints: (
+    2xs: 360px,     // very small phones
+    xs: 480px,      // landscape phone
+    sm: 576px,      // small phones
+    md: 768px,      // tablets
+    lg: 1024px,     // landscape tablets/small laptops
+    xl: 1280px,     // standard laptop
+    2xl: 1440px     // design breakpoint
+);

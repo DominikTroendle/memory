@@ -1,3 +1,6 @@
+@use '../abstract/variables' as *;
+@use 'sass:map';
+
 @mixin flex-center($direction: row, $gap: 0) {
     display: flex;
     align-items: center;
@@ -19,4 +22,10 @@
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: $direction;
+}
+
+@mixin respond($size) {
+    @media screen and (min-width: map.get($breakpoints, $size)) {
+        @content;
+    }
 }

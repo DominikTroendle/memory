@@ -4,36 +4,64 @@
 
 .settings{
     @include flex-start(column, 62px);
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     max-width: 1440px;
-    padding: 100px 170px;
+    padding: 10px;
+    @include respond(2xs){
+        padding: clamp(20px, calc(20 / 360 * 100vw), 70px);
+    }
+    @include respond(md){
+        padding: 100px 70px;
+    }
+    @include respond(xl){
+        padding: 100px 170px;
+    }
 }
 
 .settings__layout{
     @include flex-space();
+    gap: 62px;
     width: 100%;
+    flex-direction: column;
+    @include respond(md){
+        flex-direction: row;
+        gap: 0;
+    }
 }
 
 .settings__right{
     @include flex-space(column);
     gap: 40px;
-    align-items: flex-end;
+    align-items: flex-start;
     height: 100%;
+    @include respond(md){
+        align-items: flex-end;
+    }
 }
 
 .settings__preview{
-    width: 460px;
+    width: clamp(300px, calc(315 / 360 * 100vw), 315px);
+    @include respond(2xs){
+        width: clamp(315px, calc(460 / 585 * 100vw), 460px);
+    }
+    @include respond(md){
+        width: clamp(350px, calc(460 / 1024 * 100vw), 460px);
+    }
 }
 
 .settings__header{
     position: relative;
     font-family: 'Red Rose Bold';
-    font-size: 32px;
+    font-size: clamp(28px, calc(28 / 320 * 100vw), 32px);
     text-decoration: underline;
     text-decoration-color: $primary;
     text-underline-offset: 18px;
     text-decoration-thickness: 4px;
+    align-self: center;
+    @include respond(2xs){
+        align-self: flex-start;
+    }
 }
 
 .settings__header h1::after{
@@ -60,19 +88,30 @@
     margin-bottom: 16px;
     font-family: 'Almarai Bold';
     font-size: 24px;
+    @include respond(md){
+        margin-bottom: clamp(12px, calc(16 / 1024 * 100vw), 16px);
+        font-size: clamp(18px, calc(24 / 1024 * 100vw), 24px);
+    }
 
     img{
         width: 32px;
         aspect-ratio: 1/1;
+        @include respond(md){
+            width: clamp(24px, calc(32 / 1024 * 100vw), 32px);
+        }
     }
 }
 
 .settings__form label{
     @include flex-center(row, 10px);
-    margin-left: 44px;
+    margin-left: 40px;
     font-family: 'Almarai';
     font-size: 20px;
     cursor: pointer;
+    @include respond(md){
+        margin-left: clamp(32px, calc(40 / 1024 * 100vw), 40px);
+        font-size: clamp(16px, calc(20 / 1024 * 100vw), 20px);
+    }
 }
 
 .settings__form input[type=radio]{
@@ -104,18 +143,30 @@
 }
 
 .settings__summary{
-    @include flex-center(row, 20px);
+    @include flex-start(column, 40px);
+    justify-content: space-between;
     padding: 10px 14px;
     background-color: $background-light;
-    max-height: 78px;
+    @include respond(xs){
+        align-items: center;
+        gap: 20px;
+    }
+    @include respond(lg) {
+        flex-direction: row;
+        max-height: 78px;
+    }
 }
 
 .settings__summary ul{
-    @include flex-start(row, 42px);
+    @include flex-start(column, 16px);
     height: 100%;
     list-style: none;
     font-family: 'Almarai';
-    font-size: 20px;
+    font-size: clamp(18px, calc(20 / 1024 * 100vw), 20px);
+    @include respond(xs){
+        flex-direction: row;
+        gap: 42px;
+    }
 }
 
 .settings__summary li{
@@ -123,7 +174,22 @@
     position: relative;
     height: 100%;
 
+    &:not(:last-child):before{
+        display: block;
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        height: 40px;
+        width: 120px;
+        border-bottom: 4px solid $primary;
+        @include respond(xs){
+            display: none;
+        }
+    }
+
     &:not(:last-child):after{
+        display: none;
         content: "";
         position: absolute;
         right: -25px;
@@ -131,6 +197,13 @@
         height: 100%;
         border-right: 8px solid $primary;
         transform: rotate(15deg);
+        @include respond(xs){
+            display: block;
+        }
+        @include respond(lg){
+            height: 200%;
+            top: -50%;
+        }
     }
 }
 
@@ -138,6 +211,13 @@
     padding: 10px 15px;
     gap: 8px;
     max-height: 50px;
+    align-self: flex-start;
+    @include respond(md){
+        align-self: flex-end;
+    }
+    @include respond(lg){
+        align-self: normal;
+    }
 
     .button__icon{
         transform: rotate(5deg);

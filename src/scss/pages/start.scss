@@ -10,19 +10,30 @@
     background-image: url('/assets/controller_bg.png');
     background-repeat: no-repeat;
     background-position: left bottom;
+    background-size: 240px;
+    @include respond(sm){
+        background-size: 280px;
+    }
+    @include respond(lg){
+        background-size: auto;
+    }
 
     &__hero{
         color: white;
+        text-align: center;
+        @include respond(sm){
+            text-align: start;
+        }
     }
 
     &__subtitle{
         font-family: 'Almarai';
-        font-size: 48px;
+        font-size: clamp(24px, calc(24 / 320 * 100vw), 48px);
     }
 
     &__title{
         font-family: 'Red Rose Bold';
-        font-size: 140px;
+        font-size: clamp(60px, calc(140 / 1125 * 100vw), 140px);
     }
 }
 
