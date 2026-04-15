@@ -105,11 +105,13 @@
     &--blue{
         color: $player-blue;
         background-image: var(--score-player-blue);
+        min-width: var(--score-blue-min-width);
     }
 
     &--orange{
         color: $player-orange;
         background-image: var(--score-player-orange);
+        min-width: var(--score-orange-min-width);
     }
 }
 

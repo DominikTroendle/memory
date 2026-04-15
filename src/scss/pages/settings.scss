@@ -3,7 +3,7 @@
 @use '../base/font' as *;
 
 .settings{
-    @include flex-start(column, 62px);
+    @include flex-center(column, 62px);
     min-height: 100vh;
     width: 100%;
     max-width: 1440px;
