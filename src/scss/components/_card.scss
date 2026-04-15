@@ -1,3 +1,5 @@
+@use '../abstract/variables' as *;
+
 @use '../themes/coding';
 
 .card{
@@ -9,9 +11,17 @@
     filter: var(--card-filter);
 
     &__matched{
-        border: var(--card-matched-border) solid var(--button-highlight);
-        border-radius: var(--card-inner-border-radius);
-        filter: var(--card-filter-matched);
+        &--orange{
+            border: var(--card-matched-border) solid $player-orange;
+            border-radius: var(--card-inner-border-radius);
+            filter: drop-shadow(0px 0px 8px rgba($color: $player-orange, $alpha: 0.4));
+        }
+
+        &--blue{
+            border: var(--card-matched-border) solid $player-blue;
+            border-radius: var(--card-inner-border-radius);
+            filter: drop-shadow(0px 0px 8px rgba($color: $player-blue, $alpha: 0.5));
+        }
     }
     
     &__inner{

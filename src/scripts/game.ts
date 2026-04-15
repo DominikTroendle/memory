@@ -190,7 +190,7 @@ function applyMatchedClass(cardIds: number[]) {
     cardIds.forEach(id => {
         const el = document.getElementById(String(id));
         setTimeout(() => {
-            el?.classList.add('card__matched');
+            el?.classList.add(`card__matched--${currentPlayer}`);
         }, 150);
     });
 }
