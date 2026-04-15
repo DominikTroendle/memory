@@ -49,18 +49,21 @@ function initInputs(){
     themeInputs.forEach(input => {
         input.addEventListener('change', () => {
             if(isTheme(input.value)) settings.theme = input.value;
+            toggleSelected(input, themeInputs);
             updateSummary(summaryTheme, 'theme');
         });
     })
     playerInputs.forEach(input => {
         input.addEventListener('change', () => {
             settings.player = input.value;
+            toggleSelected(input, playerInputs);
             updateSummary(summaryPlayer, 'player');
         });
     })
     boardInputs.forEach(input => {
         input.addEventListener('change', () => {
             settings.boardSize = Number(input.value);
+            toggleSelected(input, boardInputs);
             updateSummary(summaryBoard, 'boardSize');
         });
     })
@@ -68,6 +71,13 @@ function initInputs(){
 
 function isTheme(value: string): value is Theme {
     return value in themeImages;
+}
+
+function toggleSelected(input: HTMLInputElement, allInputs: NodeListOf<HTMLInputElement>){
+    allInputs.forEach(i =>
+        i.parentElement?.classList.remove('selected')
+    );
+    input.parentElement?.classList.add('selected');
 }
 
 function updateSummary(element: HTMLLIElement, key: keyof GameSettings){
