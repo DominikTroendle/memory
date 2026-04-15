@@ -124,7 +124,7 @@ function addOverlayFunctions() {
     menuButton.addEventListener('click', () => {
         sessionStorage.setItem('scoreBlue', JSON.stringify(scoreBlue));
         sessionStorage.setItem('scoreOrange', JSON.stringify(scoreOrange));
-        window.location.href = "/pages/game-over.html";
+        window.location.href = "/pages/settings.html";
     });
 }
 
@@ -234,7 +234,7 @@ function checkGameEnd() {
         setTimeout(() => {
             sessionStorage.setItem('scoreBlue', JSON.stringify(scoreBlue));
             sessionStorage.setItem('scoreOrange', JSON.stringify(scoreOrange));
-            window.location.href = "/pages/game-ended.html";
+            window.location.href = "/pages/game-over.html";
         }, 1000);
     }
 }

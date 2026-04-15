@@ -17,11 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     getSessionStorage();
     init();
     applyTheme();
-    if(window.location.href.includes('game-ended')){
-        displayGameWinner();
-    } else {
-        displayFinalScore();
-    }
+    if(window.location.href.includes('game-over')) displayFinalScore();
 })
 
 function getSessionStorage() {
@@ -96,4 +92,9 @@ function displayFinalScore() {
     finalScoreDisplayOrange = getElement<HTMLSpanElement>('final-score-orange');
     finalScoreDisplayBlue.innerHTML = finalScoreBlue;
     finalScoreDisplayOrange.innerHTML = finalScoreOrange;
+    setTimeout(() => {
+        window.location.href = "/pages/game-ended.html";
+        init();
+        displayGameWinner();
+    }, 2000);
 }
