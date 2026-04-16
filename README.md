@@ -147,4 +147,4 @@ Scores are also persisted during navigation:
 
 ## 📸 Preview
 
-![Memory Game Preview](/assets/preview-github.png)
+![Memory Game Preview](public/assets/preview-github.png)
