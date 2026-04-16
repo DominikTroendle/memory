@@ -17,7 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
     getSessionStorage();
     init();
     applyTheme();
-    if(window.location.href.includes('game-over')) displayFinalScore();
+    if(window.location.href.includes('game-over')) {
+        displayFinalScore();
+    } else {
+        displayGameWinner();
+    }
 })
 
 function getSessionStorage() {
@@ -68,7 +72,7 @@ function handleDraw() {
     const isGamingTheme = gameSettings.theme === "Gaming Theme";
     winnerHeadlineRef.innerHTML = "It's a";
     winnerRef.innerHTML = "DRAW";
-    winnerRef.classList.add('endscreen__headline-draw');
+    winnerRef.classList.add('endscreen__headline--draw');
     winnerImgRef.src = isGamingTheme
         ? '../assets/winner-gaming.png'
         : '../assets/winner-draw.png';

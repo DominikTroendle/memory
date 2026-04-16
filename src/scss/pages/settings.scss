@@ -171,6 +171,12 @@
         transform: scale(0);
     }
 
+    &:hover{
+        &::before{
+            transform: scale(1);
+        } 
+    }
+
     &:checked{
         border: 2px solid black;
         
