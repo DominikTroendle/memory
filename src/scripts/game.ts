@@ -23,12 +23,24 @@ let scoreBlue = 0;
 let cards: Card[];
 let currentlyFlipped: Card[] = [];
 
+/**
+ * Initializes the game once the DOM has finished loading.
+ * Loads game settings, resolves required DOM references, and starts the game setup.
+ */
 document.addEventListener('DOMContentLoaded', () => {
     gameSettings = getGameSettings();
     initElementRefs();
     initGame();
 })
 
+/**
+ * Resolves and stores all required DOM element references used throughout the game.
+ *
+ * @remarks
+ * This function assumes that all required elements exist in the DOM.
+ * The imported `getElement` utility is responsible for throwing an error
+ * if an expected element cannot be found.
+ */
 function initElementRefs() {
     body = getElement<HTMLBodyElement>('body');
     field = getElement<HTMLElement>('field');
@@ -42,6 +54,12 @@ function initElementRefs() {
     menuButton = getElement<HTMLButtonElement>('menu');
 }
 
+/**
+ * Retrieves the persisted game settings from session storage.
+ *
+ * @returns The previously saved game settings, or a default configuration
+ * if no session data is available.
+ */
 function getGameSettings(): GameSettings {
     const data = sessionStorage.getItem('gameSettings');
     if(!data){
@@ -54,6 +72,14 @@ function getGameSettings(): GameSettings {
     return JSON.parse(data) as GameSettings;
 }
 
+/**
+ * Performs the full game setup sequence.
+ *
+ * @remarks
+ * This function applies the selected theme, initializes the active player,
+ * creates the card data model, renders the playing field, and binds all
+ * required event listeners for gameplay and overlay interaction.
+ */
 function initGame() {
     applyTheme();
     setPlayer();
@@ -64,11 +90,25 @@ function initGame() {
     addOverlayFunctions();
 }
 
+/**
+ * Applies the selected theme as a CSS class to the document body.
+ *
+ * @remarks
+ * Theme names are normalized to lowercase and stripped of whitespace
+ * before being converted into a CSS modifier class.
+ */
 function applyTheme() {
     const theme = gameSettings.theme.toLocaleLowerCase().replace(/\s/g, "");
     body.classList.add(`theme-${theme}`);
 }
 
+/**
+ * Initializes the active player state and updates the player indicator styling.
+ *
+ * @remarks
+ * If the selected starting player is orange, the corresponding CSS modifier
+ * class is applied immediately. Otherwise, blue remains the default state.
+ */
 function setPlayer() {
     if(gameSettings.player == "Orange"){
         player.classList.remove('game__player--blue');
@@ -79,6 +119,13 @@ function setPlayer() {
     }
 }
 
+/**
+ * Renders all cards into the game field based on the current card state array.
+ *
+ * @remarks
+ * Applies a larger field layout modifier when the configured board size
+ * exceeds 16 cards.
+ */
 function renderField() {
     if(gameSettings.boardSize > 16){
         field.classList.remove('game__field--small');
@@ -89,6 +136,13 @@ function renderField() {
     }
 }
 
+/**
+ * Creates the HTML string representation for a single memory card.
+ *
+ * @param id - Unique card identifier used for DOM lookup and state mapping.
+ * @param src - Relative image source file name used for the card back.
+ * @returns HTML markup for a single card button element.
+ */
 function returnCardHTML(id: number, src: string) {
     return `<button class="card" id=${id}>
                 <div class="card__inner">
@@ -102,6 +156,13 @@ function returnCardHTML(id: number, src: string) {
             </button>`;
 }
 
+/**
+ * Attaches click event listeners to all rendered card elements.
+ *
+ * @remarks
+ * On each click, the selected card is flipped and the current pair is evaluated
+ * for a match once two cards are active.
+ */
 function addCardFunction() {
     const allCards = document.querySelectorAll<HTMLButtonElement>('.card');
     allCards.forEach(e => {
@@ -114,6 +175,14 @@ function addCardFunction() {
     });
 }
 
+/**
+ * Attaches all event listeners related to the game overlay controls.
+ *
+ * @remarks
+ * The exit button opens the confirmation dialog.
+ * The resume button closes it.
+ * The menu button persists scores and navigates back to the settings page.
+ */
 function addOverlayFunctions() {
     exitButton.addEventListener('click', () => {
         openOverlay();
@@ -128,6 +197,13 @@ function addOverlayFunctions() {
     });
 }
 
+/**
+ * Opens the exit confirmation overlay and triggers its entrance animation.
+ *
+ * @remarks
+ * A small timeout is used so the CSS transition class is applied
+ * after the dialog has been rendered.
+ */
 function openOverlay() {
     overlay.showModal();
     setTimeout(() => {
@@ -136,12 +212,24 @@ function openOverlay() {
     }, 20);
 }
 
+/**
+ * Closes the exit confirmation overlay and removes related UI state classes.
+ */
 function closeOverlay() {
     overlay.close();
     overlayCard.classList.remove('overlay__card--show');
     body.classList.remove('no-scroll');
 }
 
+/**
+ * Creates the card data model for the current game round.
+ *
+ * @returns A shuffled array of card objects containing duplicated image pairs.
+ *
+ * @remarks
+ * The number of unique images is derived from half the configured board size.
+ * Each selected image is duplicated once to create a matching pair.
+ */
 function createCardArray() {
     const neededCards = gameSettings.boardSize / 2;
     const selectedImages = bgImages.slice(0, neededCards);
@@ -154,6 +242,12 @@ function createCardArray() {
     }));
 }
 
+/**
+ * Randomly shuffles an array in place using the Fisher-Yates algorithm.
+ *
+ * @param array - Array of image file names to shuffle.
+ * @returns The same array instance in shuffled order.
+ */
 function shuffle(array: string[]) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -162,6 +256,15 @@ function shuffle(array: string[]) {
     return array;
 }
 
+/**
+ * Flips a card and stores its state in the currently active selection.
+ *
+ * @param card - The clicked card button element.
+ * @param id - The card's unique identifier used to resolve its state object.
+ *
+ * @remarks
+ * Cards that are already matched or already flipped are ignored.
+ */
 function flipCard(card: HTMLButtonElement, id: number) {
     const currentCard = cards[id];
     if(currentCard.matched || currentCard.flipped) return;
@@ -170,6 +273,15 @@ function flipCard(card: HTMLButtonElement, id: number) {
     card.classList.toggle('is-flipped');
 }
 
+/**
+ * Evaluates the two currently flipped cards and applies the corresponding game logic.
+ *
+ * @remarks
+ * If both cards match, they are marked as matched and the current player's
+ * score is increased. Otherwise, both cards are reset and the active player changes.
+ * After evaluation, the temporary flip selection is cleared and the game end
+ * condition is checked.
+ */
 function checkMatch() {
     if(currentlyFlipped.length != 2) return;
     const [card1, card2] = currentlyFlipped;
@@ -186,6 +298,15 @@ function checkMatch() {
     checkGameEnd();
 }
 
+/**
+ * Applies a player-specific matched-card CSS class to the given cards.
+ *
+ * @param cardIds - IDs of the matched cards that should receive the visual state.
+ *
+ * @remarks
+ * The class assignment is slightly delayed to allow the flip animation
+ * to complete first.
+ */
 function applyMatchedClass(cardIds: number[]) {
     cardIds.forEach(id => {
         const el = document.getElementById(String(id));
@@ -195,6 +316,12 @@ function applyMatchedClass(cardIds: number[]) {
     });
 }
 
+/**
+ * Resets all non-matched flipped cards back to their hidden state.
+ *
+ * @remarks
+ * The reset is delayed to give the player time to view the mismatched pair.
+ */
 function resetCards() {
     setTimeout(() => {
         cards.forEach(e => {
@@ -207,6 +334,10 @@ function resetCards() {
     }, 500);
 }
 
+/**
+ * Increments the score of the currently active player
+ * and updates both score display elements in the UI.
+ */
 function updateScore() {
     if(currentPlayer == "orange") {
         scoreOrange += 1;
@@ -217,6 +348,12 @@ function updateScore() {
     scoreDisplayOrange.innerHTML = String(scoreOrange);
 }
 
+/**
+ * Switches the active player and updates the visual player indicator.
+ *
+ * @remarks
+ * The player switch is delayed to stay synchronized with the mismatch reset timing.
+ */
 function switchPlayer() {
     setTimeout(() => {
         player.classList.remove(`game__player--${currentPlayer}`);
@@ -225,6 +362,13 @@ function switchPlayer() {
     }, 500);
 }
 
+/**
+ * Checks whether all pairs have been found and ends the game if so.
+ *
+ * @remarks
+ * When the game ends, both player scores are persisted to session storage
+ * and the user is redirected to the game-over page after a short delay.
+ */
 function checkGameEnd() {
     const totalScore = scoreBlue + scoreOrange;
     const maxScore = gameSettings.boardSize / 2;
