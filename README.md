@@ -1,4 +1,4 @@
-# 🧠 Memory Game
+# Memory Game
 
 A browser-based memory card game built with **TypeScript**, **SCSS**, and **Vite**.
 The project focuses on modular frontend architecture, type-safe logic, and interactive gameplay.
@@ -11,7 +11,7 @@ The project focuses on modular frontend architecture, type-safe logic, and inter
 
 ---
 
-## 🚀 Features
+## Features
 
 * Multiple **themes** with dynamic styling and preview
 * Configurable **board sizes**
@@ -23,7 +23,7 @@ The project focuses on modular frontend architecture, type-safe logic, and inter
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 * **TypeScript** – type-safe application logic
 * **SCSS** – modular and maintainable styling
@@ -73,7 +73,7 @@ src/
 
 ---
 
-## 🎮 Game Flow
+## Game Flow
 
 1. Select:
 
@@ -90,7 +90,7 @@ src/
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 src/
@@ -103,7 +103,7 @@ src/
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 Game settings are stored in `sessionStorage`:
 
@@ -122,7 +122,7 @@ Scores are also persisted during navigation:
 
 ---
 
-## 🧩 Key Concepts
+## Key Concepts
 
 * **State-driven rendering** via a central `cards` array
 * Separation of:
@@ -135,7 +135,7 @@ Scores are also persisted during navigation:
 
 ---
 
-## 📈 Possible Improvements
+## Possible Improvements
 
 * Add single-player mode with AI
 * Persist scores across sessions (localStorage / backend)
@@ -145,6 +145,6 @@ Scores are also persisted during navigation:
 
 ---
 
-## 📸 Preview
+## Preview
 
 ![Memory Game Preview](public/assets/preview-github.png)
