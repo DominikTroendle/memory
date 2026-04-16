@@ -52,12 +52,6 @@ npm install
 npm run dev
 ```
 
-### Build for production
-
-```bash
-npm run build
-```
-
 ### Preview production build
 
 ```bash
@@ -153,4 +147,4 @@ Scores are also persisted during navigation:
 
 ## 📸 Preview
 
-![Memory Game Preview](assets/preview-github.png)
+![Memory Game Preview](/assets/preview-github.png)
