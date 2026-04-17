@@ -86,7 +86,7 @@ src/
 ├── scripts/       # Page-specific logic (settings, game, endscreen)
 ├── styles/        # SCSS structure
 ├── types/         # TypeScript interfaces
-├── utils/         # Helper functions (DOM utilities, etc.)
+├── utils/         # Helper functions (DOM utilities)
 ```
 
 ---
