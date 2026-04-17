@@ -118,8 +118,8 @@ function isTheme(value: string): value is Theme {
  * to the current selection.
  */
 function toggleSelected(input: HTMLInputElement, allInputs: NodeListOf<HTMLInputElement>){
-    allInputs.forEach(i =>
-        i.parentElement?.classList.remove('selected')
+    allInputs.forEach(input =>
+        input.parentElement?.classList.remove('selected')
     );
     input.parentElement?.classList.add('selected');
 }

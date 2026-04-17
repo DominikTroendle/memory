@@ -166,9 +166,9 @@ function returnCardHTML(id: number, src: string) {
  */
 function addCardFunction() {
     const allCards = document.querySelectorAll<HTMLButtonElement>('.card');
-    allCards.forEach(e => {
-        e.addEventListener('click', e => {
-            const card = e.currentTarget as HTMLButtonElement;
+    allCards.forEach(card => {
+        card.addEventListener('click', event => {
+            const card = event.currentTarget as HTMLButtonElement;
             const id = Number(card.id);
             flipCard(card, id);
             checkMatch();
@@ -208,7 +208,7 @@ function addOverlayFunctions() {
 function openOverlay() {
     overlay.showModal();
     setTimeout(() => {
-        overlayCard.classList.add('overlay__card--show');
+        overlayCard.classList.add('overlay__card--slide');
         body.classList.add('no-scroll');
     }, 20);
 }
@@ -218,7 +218,7 @@ function openOverlay() {
  */
 function closeOverlay() {
     overlay.close();
-    overlayCard.classList.remove('overlay__card--show');
+    overlayCard.classList.remove('overlay__card--slide');
     body.classList.remove('no-scroll');
 }
 
@@ -235,7 +235,7 @@ function createCardArray() {
     const neededCards = gameSettings.boardSize / 2;
     const selectedImages = bgImages.slice(0, neededCards);
     const cardImages = [...selectedImages, ...selectedImages];
-    return shuffle(cardImages).map((image, index) => ({
+    return shuffleArray(cardImages).map((image, index) => ({
         id: index,
         source: image,
         flipped: false,
@@ -249,7 +249,7 @@ function createCardArray() {
  * @param array - Array of image file names to shuffle.
  * @returns The same array instance in shuffled order.
  */
-function shuffle(array: string[]) {
+function shuffleArray(array: string[]) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
@@ -327,11 +327,11 @@ function applyMatchedClass(cardIds: number[]) {
  */
 function resetCards() {
     setTimeout(() => {
-        cards.forEach(e => {
-            const card = document.getElementById(String(e.id));
-            if(e.flipped && !e.matched) {
-                card?.classList.remove('is-flipped');
-                e.flipped = !e.flipped;
+        cards.forEach(card => {
+            const cardRef = document.getElementById(String(card.id));
+            if(card.flipped && !card.matched) {
+                cardRef?.classList.remove('is-flipped');
+                card.flipped = !card.flipped;
             }
         });
         isAnimated = false;
