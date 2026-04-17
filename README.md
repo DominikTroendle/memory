@@ -60,19 +60,6 @@ npm run preview
 
 ---
 
-## Project Structure
-
-```text
-src/
-├── config/        # Static configuration such as themes and assets
-├── types/         # TypeScript interfaces and types
-├── utils/         # Helper utilities
-├── pages/         # Page-specific application logic
-├── styles/        # SCSS structure and styling
-```
-
----
-
 ## Game Flow
 
 1. Select:
@@ -132,16 +119,6 @@ Scores are also persisted during navigation:
   * configuration
 * Controlled DOM access via utility helpers
 * Type-safe validation using TypeScript (e.g. custom type guards)
-
----
-
-## Possible Improvements
-
-* Add single-player mode with AI
-* Persist scores across sessions (localStorage / backend)
-* Add animations with a dedicated library
-* Improve accessibility (ARIA, keyboard navigation)
-* Add unit tests for game logic
 
 ---
 
