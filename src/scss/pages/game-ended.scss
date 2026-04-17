@@ -22,7 +22,7 @@
     }
 }
 
-.endscreen__header{
+.endscreen__content{
     @include flex-center(column, 10px);
     z-index: 1;
 }

@@ -56,7 +56,7 @@
     font-size: clamp(28px, calc(28 / 320 * 100vw), 32px);
     text-decoration: underline;
     text-decoration-color: $primary;
-    text-underline-offset: 18px;
+    text-underline-offset: 14px;
     text-decoration-thickness: 4px;
     align-self: center;
     @include respond(2xs){
@@ -64,10 +64,10 @@
     }
 }
 
-.settings__header h1::after{
+.settings__header h2::after{
     content: "";
     position: absolute;
-    bottom: -7px;
+    bottom: -9px;
     left: -16px;
     border: 8px solid $primary;
     transform: rotate(45deg);

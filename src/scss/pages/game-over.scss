@@ -12,7 +12,7 @@
     background-color: var(--background);
 }
 
-.gameover__header{
+.gameover__content{
     @include flex-center(column, 24px);
     font-family: var(--font-primary);
 }
