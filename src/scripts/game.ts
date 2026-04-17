@@ -22,6 +22,7 @@ let scoreOrange = 0;
 let scoreBlue = 0;
 let cards: Card[];
 let currentlyFlipped: Card[] = [];
+let isAnimated = false;
 
 /**
  * Initializes the game once the DOM has finished loading.
@@ -267,7 +268,7 @@ function shuffle(array: string[]) {
  */
 function flipCard(card: HTMLButtonElement, id: number) {
     const currentCard = cards[id];
-    if(currentCard.matched || currentCard.flipped) return;
+    if(currentCard.matched || currentCard.flipped || isAnimated) return;
     if(!currentCard.flipped) currentCard.flipped = true;
     if(currentCard.flipped) currentlyFlipped.push(currentCard);
     card.classList.toggle('is-flipped');
@@ -284,12 +285,14 @@ function flipCard(card: HTMLButtonElement, id: number) {
  */
 function checkMatch() {
     if(currentlyFlipped.length != 2) return;
+    isAnimated = true;
     const [card1, card2] = currentlyFlipped;
     if(card1.source == card2.source) {
         card1.matched = true;
         card2.matched = true;
         applyMatchedClass([card1.id, card2.id]);
         updateScore();
+        isAnimated = false;
     } else {
         resetCards();
         switchPlayer();
@@ -331,6 +334,7 @@ function resetCards() {
                 e.flipped = !e.flipped;
             }
         });
+        isAnimated = false;
     }, 500);
 }
 
