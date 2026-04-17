@@ -43,7 +43,7 @@
 
         &--back{
             transform: rotateY(180deg);
-            background-color: #E8F3F0;
+            background-color: var(--card-background);
         }
     }
     &.is-flipped .card__inner{

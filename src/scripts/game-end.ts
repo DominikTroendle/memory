@@ -159,9 +159,9 @@ function displayFinalScore() {
     finalScoreDisplayOrange = getElement<HTMLSpanElement>('final-score-orange');
     finalScoreDisplayBlue.innerHTML = finalScoreBlue;
     finalScoreDisplayOrange.innerHTML = finalScoreOrange;
-    /* setTimeout(() => {
+    setTimeout(() => {
         window.location.href = "/src/pages/game-ended.html";
         init();
         displayGameWinner();
-    }, 2000); */
+    }, 2000);
 }

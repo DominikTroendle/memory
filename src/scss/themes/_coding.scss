@@ -8,6 +8,7 @@
     --button-highlight: #4DD5BC;
     --button-solid: #66CFBC;
     --button-solid-hover: #66CFBCB3;
+    --card-background: #cee7e0;
     --header-background: #303131;
     --overlay-background: white;
     --score-background: #86E9D633;
@@ -26,7 +27,7 @@
 
     //card
     --card-background-image:
-                            url("/assets/da-icon.png"),
+                            url("/assets/da-icon.svg"),
                             linear-gradient(215deg,#4DD5BC 0%, #286F62 60%, #10443a 100%);
     --card-border-radius: 0px;
     --card-filter: none;
@@ -51,15 +52,17 @@
     --score-font-size: 24px;
     --score-gap: 20px;
     --score-padding-left: 28px;
-    --score-player-blue: url("/assets/player-coding-blue.png");
-    --score-player-orange: url("/assets/player-coding-orange.png");
+    --score-player-blue: url("/assets/player-coding-blue.svg");
+    --score-player-orange: url("/assets/player-coding-orange.svg");
     --score-blue-min-width: 108px;
     --score-orange-min-width: 143px;
+    --score-filter-orange: none;
+    --score-filter-blue: none;
 
     //player
     --player-padding-right: 39px;
-    --player-blue: url("/assets/player-coding-blue.png");
-    --player-orange: url("/assets/player-coding-orange.png");
+    --player-blue: url("/assets/player-coding-blue.svg");
+    --player-orange: url("/assets/player-coding-orange.svg");
     --player-bg-size: 24px 20px;
     --player-font-size: 26px;
     --player-line-height: normal;

@@ -8,6 +8,7 @@
     --button-highlight: #E71C4F;
     --button-solid: #ED1B76;
     --button-solid-hover: white;
+    --card-background: #e9e1e4;
     --header-background: #545d75;
     --overlay-background: white;
     --score-background: white;
@@ -50,15 +51,17 @@
     --score-font-size: 30px;
     --score-gap: 40px;
     --score-padding-left: 30px;
-    --score-player-blue: url("/assets/winner-blue.png");
-    --score-player-orange: url("/assets/winner-orange.png");
+    --score-player-blue: url("/assets/winner-blue.svg");
+    --score-player-orange: url("/assets/winner-orange.svg");
     --score-blue-min-width: 67px;
     --score-orange-min-width: 67px;
+    --score-filter-orange: brightness(0) saturate(100%) invert(69%) sepia(14%) saturate(5803%) hue-rotate(336deg) brightness(103%) contrast(92%);
+    --score-filter-blue: brightness(0) saturate(100%) invert(63%) sepia(71%) saturate(2954%) hue-rotate(175deg) brightness(101%) contrast(101%);
 
     //player
     --player-padding-right: 58px;
-    --player-blue: url("/assets/player-gaming-blue.png");
-    --player-orange: url("/assets/player-gaming-orange.png");
+    --player-blue: url("/assets/player-gaming-blue.svg");
+    --player-orange: url("/assets/player-gaming-orange.svg");
     --player-bg-size: 40px 40px;
     --player-font-size: clamp(22px, calc(32 / 480 * 100vw), 32px);
     --player-line-height: 40px;

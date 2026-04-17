@@ -106,12 +106,14 @@
         color: $player-blue;
         background-image: var(--score-player-blue);
         min-width: var(--score-blue-min-width);
+        filter: var(--score-filter-blue);
     }
 
     &--orange{
         color: $player-orange;
         background-image: var(--score-player-orange);
         min-width: var(--score-orange-min-width);
+        filter: var(--score-filter-orange);
     }
 }
 
