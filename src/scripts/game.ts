@@ -150,7 +150,7 @@ function returnCardHTML(id: number, src: string) {
                     <div
                         class="card__face
                         card__face--back"
-                        style="background-image: url('../assets/${src}')"
+                        style="background-image: url('../../assets/${src}')"
                     ></div>
                 </div>
             </button>`;
@@ -193,7 +193,7 @@ function addOverlayFunctions() {
     menuButton.addEventListener('click', () => {
         sessionStorage.setItem('scoreBlue', JSON.stringify(scoreBlue));
         sessionStorage.setItem('scoreOrange', JSON.stringify(scoreOrange));
-        window.location.href = "/pages/settings.html";
+        window.location.href = "/src/pages/settings.html";
     });
 }
 
@@ -378,7 +378,7 @@ function checkGameEnd() {
         setTimeout(() => {
             sessionStorage.setItem('scoreBlue', JSON.stringify(scoreBlue));
             sessionStorage.setItem('scoreOrange', JSON.stringify(scoreOrange));
-            window.location.href = "/pages/game-over.html";
+            window.location.href = "/src/pages/game-over.html";
         }, 1000);
     }
 }

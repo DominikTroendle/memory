@@ -121,8 +121,8 @@ function handleDraw() {
     winnerRef.innerHTML = "DRAW";
     winnerRef.classList.add('endscreen__headline--draw');
     winnerImgRef.src = isGamingTheme
-        ? '../assets/winner-gaming.png'
-        : '../assets/winner-draw.png';
+        ? '../../assets/winner-gaming.png'
+        : '../../assets/winner-draw.png';
 }
 
 /**
@@ -140,8 +140,8 @@ function handleWinner(winner: "blue" | "orange") {
         ? (winner === "blue" ? "Blue Player" : "Orange Player")
         : winner.toUpperCase();
     winnerImgRef.src = isGamingTheme
-        ? '../assets/winner-gaming.png'
-        : `../assets/winner-${winner}.png`;
+        ? '../../assets/winner-gaming.png'
+        : `../../assets/winner-${winner}.png`;
     if(winner === "orange") {
         winnerRef.classList.add('endscreen__headline--orange');
     }
@@ -160,7 +160,7 @@ function displayFinalScore() {
     finalScoreDisplayBlue.innerHTML = finalScoreBlue;
     finalScoreDisplayOrange.innerHTML = finalScoreOrange;
     setTimeout(() => {
-        window.location.href = "/pages/game-ended.html";
+        window.location.href = "/src/pages/game-ended.html";
         init();
         displayGameWinner();
     }, 2000);

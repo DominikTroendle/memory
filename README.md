@@ -82,10 +82,11 @@ npm run preview
 ```
 src/
 ├── config/        # Static configuration (themes, assets)
+├── pages/         # Page-specific structure (settings, game, endscreen)
+├── scripts/       # Page-specific logic (settings, game, endscreen)
+├── styles/        # SCSS structure
 ├── types/         # TypeScript interfaces
 ├── utils/         # Helper functions (DOM utilities, etc.)
-├── pages/         # Page-specific logic (settings, game, endscreen)
-├── styles/        # SCSS structure
 ```
 
 ---

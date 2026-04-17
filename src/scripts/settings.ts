@@ -19,8 +19,8 @@ const playerInputs = document.querySelectorAll<HTMLInputElement>('input[name="pl
 const boardInputs = document.querySelectorAll<HTMLInputElement>('input[name="board"]');
 
 const themePreviewMap: Record<string, string> = {
-    CodeVibesTheme: '../assets/theme-coding_preview.png',
-    GamingTheme: '../assets/theme-gaming_preview.png'
+    CodeVibesTheme: '../../assets/theme-coding_preview.png',
+    GamingTheme: '../../assets/theme-gaming_preview.png'
 }
 
 /**
