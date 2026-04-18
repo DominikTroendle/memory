@@ -187,13 +187,12 @@
 }
 
 .settings__summary{
-    @include flex-start(column, 40px);
+    @include flex-start(column, 20px);
     justify-content: space-between;
     padding: 10px 14px;
     background-color: $background-light;
     @include respond(xs){
         align-items: center;
-        gap: 20px;
     }
     @include respond(lg) {
         flex-direction: row;
@@ -202,14 +201,14 @@
 }
 
 .settings__summary ul{
-    @include flex-start(column, 16px);
+    @include flex-start(row, 42px);
+    flex-wrap: wrap;
+    row-gap: 12px;
     height: 100%;
     list-style: none;
     font-family: 'Almarai';
     font-size: clamp(18px, calc(20 / 1024 * 100vw), 20px);
     @include respond(xs){
-        flex-direction: row;
-        gap: 42px;
     }
 }
 
@@ -218,22 +217,7 @@
     position: relative;
     height: 100%;
 
-    &:not(:last-child):before{
-        display: block;
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        height: 40px;
-        width: 120px;
-        border-bottom: 4px solid $primary;
-        @include respond(xs){
-            display: none;
-        }
-    }
-
     &:not(:last-child):after{
-        display: none;
         content: "";
         position: absolute;
         right: -25px;
@@ -241,9 +225,6 @@
         height: 100%;
         border-right: 8px solid $primary;
         transform: rotate(15deg);
-        @include respond(xs){
-            display: block;
-        }
         @include respond(lg){
             height: 200%;
             top: -50%;
