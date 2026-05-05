@@ -1,6 +1,7 @@
 # Memory Game
 
 A browser-based memory card game built with **TypeScript**, **SCSS**, and **Vite**.
+
 The project focuses on modular frontend architecture, type-safe logic, and interactive gameplay.
 
 ---
